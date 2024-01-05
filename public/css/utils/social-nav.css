@@ -1,0 +1,30 @@
+
+.social-nav {
+    background-color: var(--main-purple);
+    color: var(--white);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 7vh;
+}
+
+.socials {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.socials img {
+    height: 25px;
+}
+
+.socials a {
+    text-decoration: none;
+    color: var(--white);
+    margin-left: 5px;
+}
+@media screen and (max-width:425px) {
+    .socials a {
+        font-size: 12px;
+    }
+}

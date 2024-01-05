@@ -1,0 +1,64 @@
+.mobile-nav-not-toggled {
+    left: -100%;
+    position: absolute;
+    transition: left 0.5s ease-out;
+}
+
+.mobile-nav-toggled {
+    left: 0;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--main-purple);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: left 0.5s ease;
+    z-index: 99999;
+}
+
+.mobile-nav-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    border: 1px;
+    background: none;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.mobile-nav-close-btn:hover {
+    cursor: pointer;
+}
+
+.mobile-nav-close-btn img {
+    height: 30px;
+    filter: invert(100%);
+}
+
+.mobile-nav-ul {
+    list-style: none;
+
+}
+
+.mobile-nav-li {
+    padding: 20px;
+    font-size: 25px;
+}
+
+.mobile-nav-li a {
+    text-decoration: none;
+    color: var(--white);
+}
+
+.mobile-nav-open-btn {
+    display: none;
+    margin-right: 30px;
+    border: 1px;
+    background: none;
+}
+
+.mobile-nav-open-btn img {
+    height: 43px;
+}
+
