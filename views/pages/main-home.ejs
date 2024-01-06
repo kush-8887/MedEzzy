@@ -3,11 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MedEzzy</title>
+    <link rel="stylesheet" href="/css/main-homepage.css">
+    <link rel="stylesheet" href="/css/utils/footer.css">
+    <link rel="stylesheet" href="/css/utils/main-nav.css">
+    <link rel="stylesheet" href="/css/utils/mobile-nav.css">
+    <link rel="stylesheet" href="/css/utils/social-nav.css">
 </head>
 <body>
     <%- include("../partials/utils/mobile-nav.ejs"); %>
     <%- include("../partials/utils/social-nav.ejs"); %>
-    <%- include("../partials/utils/main-nav.ejs"); %>
+    <div class="img-container">
+        <%- include("../partials/utils/main-nav.ejs"); %>
+        <!-- welcome section  -->
+        <div class="welcome-container">
+            <div class="welcome-container-content">
+                <div class="main-heading">
+                    Welcome to MedEzzy
+                </div>
+                <div class="description">
+                    Your Health, Our Priority
+                </div>
+                <div class="welcome-btns">
+                    <div class="wrapper">
+                        <a href="#"><span>Visit Store</span></a>
+                    </div>
+                    <div class="wrapper" style="margin-left: 10px;">
+                        <a href="#"><span>Get consultation</span></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- about shop  -->
+    <div class="spacing-utility">
+        <div class="about-shop-container">
+            <div class="secondary-heading" style="margin-left: 30px;">
+                What Sets Us Apart
+            </div>
+        
+        <div class="about-shop">
+            <div class="about-shop-card">
+                <div class="about-shop-img">
+                    <img src="/assets/images/about-grid/img_4.jpg" alt="">
+                </div>
+                <div class="about-shop-heading">
+                    Extensive Product Range
+                </div>
+                <div class="about-shop-description">
+                    Explore a diverse selection of healthcare products tailored to meet your specific needs. From vital medications to wellness supplements, we've got you covered.
+                </div>
+            </div>       
+            <div class="about-shop-card">
+                <div class="about-shop-img">
+                    <img src="/assets/images/about-grid/img_2.jpg" alt="">
+                </div>
+                <div class="about-shop-heading">
+                    Prompt Delivery Services
+                </div>
+                <div class="about-shop-description">
+                    Your well-being is our priority. Benefit from our prompt delivery services, ensuring that your healthcare essentials reach you precisely when you need them.    
+                </div>
+            </div>   
+            <div class="about-shop-card">
+                <div class="about-shop-img">
+                    <img src="/assets/images/about-grid/img_1.jpg" alt="">
+                </div>
+                <div class="about-shop-heading">
+                    Easy Consultation
+                </div>
+                <div class="about-shop-description">
+                    Access top-notch medical expertise anytime, anywhere. Professional online consultations at affordable rates. Your well-being, our priority. Book your consultation now!
+                </div>
+            </div>
+            <div class="about-shop-card">
+                <div class="about-shop-img">
+                    <img src="/assets/images/about-grid/img_3.jpg" alt="">
+                </div>
+                <div class="about-shop-heading">
+                    Trusted Medicines Delivered
+                </div>
+                <div class="about-shop-description">
+                    Explore a curated selection of medicines from renowned global brands. Your wellness journey starts here—trusted medications, delivered to your doorstep.
+                </div>
+            </div>
+        </div>   
+    </div> 
+    </div>
+    <!-- offer zone -->
+    <div class="offer-container">
+        <div class="offer-content">
+            <div class="offer-details">
+                <div style="color: #033b4a; font-size: 30px;">
+                    Introduction Offer
+                </div>
+                <div class="secondary-heading dist-heading">
+                    Buy all medicines at 30% discount.
+                </div>
+                <div class="description" style="line-height: 40px;">
+                    Get extra cashback discounts and free shipping
+                </div>
+            </div>
+            <div class="offer-image">
+                <img src="/assets/images/offer/img_1.png" alt="" style="height: 340px ">
+            </div>
+        </div>
+        <!-- <div class="decoration-img">
+            <img src="./public/assets/images/offer/leaf_1.png" alt="" style="height: 240px;">
+        </div>       -->
+    </div>
+    <!-- facilities -->
+    <div class="spacing-utility">
+        <div class="facilities">
+            <div class="facilities-card">
+                <div class="facilities-img">
+                    <img src="/assets/svgs/about/truck.svg" alt="">
+                </div>
+                <div class="facilities-content">
+                    <div class="facilities-heading">
+                        Free Shipping
+                    </div>
+                    <div class="facilities-text">
+                        Shopping Over Rs.199 or first purchase you will get 100% free shipping
+                    </div>
+                </div>
+            </div>
+            <div class="facilities-card">
+                <div class="facilities-img">
+                    <img src="/assets/svgs/about/wallet.svg" alt="">
+                </div>
+                <div class="facilities-content">
+                    <div class="facilities-heading">
+                        Cheapest Medicine
+                    </div>
+                    <div class="facilities-text">
+                        Get the cheapest medicine in India starting at just Rs.49!
+                    </div>
+                </div>
+            </div>
+            <div class="facilities-card">
+                <div class="facilities-img">
+                    <img src="/assets/svgs/socials/contact.svg" alt="">
+                </div>
+                <div class="facilities-content">
+                    <div class="facilities-heading">
+                        24/7 Customer Support
+                    </div>
+                    <div class="facilities-text">
+                        Our dedicated support engneer are waiting for assist you.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
+    <%- include("../partials/utils/footer.ejs"); %> 
+    <div class="copyright">
+        <p>CopyRight &#169; Group 8 BCA A 2024</p>
+    </div>
 </body>
+<script src="js/utils/hamburger.js"></script>
 </html>
