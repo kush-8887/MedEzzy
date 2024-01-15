@@ -16,10 +16,19 @@
             Enter a valid password (Password must be longer than 8 charecters)
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        <div class="alert alert-danger alert-danger-visible" role="alert" id="pass-alert" style=`${<%= display %>}`>
-            <%= message %>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+        <!-- This not an error just an EJS thing IGNORE! -->
+        <% if (display == "none") { %>
+            <div class="alert alert-danger alert-danger-visible" role="alert" id="pass-alert" style="display:none;">
+                <%= message %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <% } else { %>
+            <div class="alert alert-danger alert-danger-visible" role="alert" id="pass-alert" style="display:flex;">
+                <%= message %>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>   
+        <% } %> 
+                 
         <div class="form-container">
             <div class="form-content">
                 <div class="form-heading">

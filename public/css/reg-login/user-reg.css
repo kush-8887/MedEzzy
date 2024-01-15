@@ -112,4 +112,6 @@ body{
     display: none;
     align-items: center;
     justify-content: space-between;
+    position: absolute !important;
+    top: 0;
 }

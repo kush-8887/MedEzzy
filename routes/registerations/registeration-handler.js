@@ -52,11 +52,11 @@ router.post('/register-customer', async(req,res)=>{
             }
         }else{
             //Tell user email already exits
-            res.send("Email already Exits") //Change this to ejs!
-            // res.render('pages/registeration-pages/user/user-reg.ejs',{
-            //     message: "Email already! Use different email or login!",
-            //     display: "flex"
-            // });
+            // res.send("Email already Exits")
+            res.render('pages/registeration-pages/user/user-reg.ejs',{
+                message: "Email already in exists! Use different email or login!",
+                display: "flex"
+            });
         }
     }catch(error){
         console.log(error);
