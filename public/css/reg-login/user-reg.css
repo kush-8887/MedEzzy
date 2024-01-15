@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Inter&family=Roboto&family=Rubik&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cabin', sans-serif;
+}
+
+:root {
+--main-purple: #3e4095;
+--main-green: #65bc50;
+--main-heading: #033b4a;
+--nav-items-color:#636778;
+--white: white;
+--offer-background:#f4f8fb;
+--border-color:#00c9a7;
+--grey-border-color:rgb(215, 217, 224);
+}
+
+body{
+    background-color: var(--main-purple) !important;
+    height: 100vh;
+}
+
+.reg-container{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container{
+    background-color: var(--white);
+    height: 80vh;
+    width: 575px;
+    padding: 30px;
+    border-radius: 20px;
+    margin: 0% 11%;
+    /* -webkit-box-shadow: 13px -13px 0px -1px rgba(101,188,80,1);
+    -moz-box-shadow: 13px -13px 0px -1px rgba(101,188,80,1);
+    box-shadow: 13px -13px 0px -1px rgba(101,188,80,1); */
+}
+.form-content{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    /* margin: 15% 0%; */
+    align-items: center;
+}
+.form-heading{
+    text-align: center;
+}
+.reg-form{
+    width: 100%;
+    margin-top: 20px;
+}
+.email-cont{
+    width: 100%;
+    font-size: 23px;
+    margin-top: 20px;
+}
+#email{
+    margin-top: 5px;
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 5px; 
+    border: 1px solid;
+}
+
+.pass-cont{
+    width: 100%;
+    font-size: 23px;
+    margin-top: 30px;
+}
+#pass{
+    margin-top: 5px;
+    width: 100%;
+    padding: 8px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid;
+}
+.submit-cont{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    justify-content: center;
+}
+#submit{
+    width: 100%;
+    padding: 11px 40px 11px 40px;
+    border-radius: 5px;
+    background: var(--main-purple);
+    color: var(--white);
+    font-size: 17px;
+}
+#submit:hover{
+    cursor: pointer;
+}
+
+.login-cont{
+    margin-top: 20px;
+}
+
+.alert-danger-visible{
+    width: 100%;
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute !important;
+    top: 0;
+}
