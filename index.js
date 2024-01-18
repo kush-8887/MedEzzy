@@ -5,7 +5,7 @@ var app = express();
 app.set('view engine', 'ejs');
 
 //External Routes
-const registerRoute = require('./routes/registerations/registeration-handler')
+const registerRoute = require('./routes/registerations/cust-reg-handler')
 
 //Serving directory through express.static
 app.use(express.static(__dirname + '/public'));
