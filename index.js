@@ -5,7 +5,8 @@ var app = express();
 app.set('view engine', 'ejs');
 
 //External Routes
-const registerRoute = require('./routes/registerations/cust-reg-handler')
+const custRegisterRoute = require('./routes/registerations/cust-reg-handler');
+const partRegisterRoute = require('./routes/registerations/partner-reg-handler');
 
 //Serving directory through express.static
 app.use(express.static(__dirname + '/public'));
@@ -16,7 +17,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //Routes
-app.use('/',registerRoute);
+app.use('/',custRegisterRoute);
+app.use('/',partRegisterRoute);
 app.get('/',(req,res)=>{
     res.render('pages/main-home.ejs');
 })
