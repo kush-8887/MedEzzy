@@ -9,8 +9,8 @@ const custRegisterRoute = require('./routes/registerations/cust-reg-handler');
 const partRegisterRoute = require('./routes/registerations/partner-reg-handler');
 
 //Serving directory through express.static
-app.use(express.static(__dirname + '/public'));
-app.use(express.static(__dirname + '/views'));
+app.use(express.static(__dirname + '/public/'));
+app.use(express.static(__dirname + '/views/ '));
 
 //allow json parsing
 app.use(express.urlencoded({ extended: true }));

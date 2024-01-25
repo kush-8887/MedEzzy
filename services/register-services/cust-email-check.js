@@ -9,7 +9,7 @@ function custEmailCheck(userData) {
             const user_email = result.rows;
 
             for (var i = 0; i < user_email.length; i++) {
-                if (user_email[i].user_email === emailToCheck) {
+                if (user_email[i].cust_email === emailToCheck) {
                     return false;
                 }
             }
@@ -19,6 +19,7 @@ function custEmailCheck(userData) {
             console.error("Error performing SQL query:", error);
         });
 }
+
 module.exports ={
     custEmailCheck,
-}
+};

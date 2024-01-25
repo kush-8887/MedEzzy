@@ -8,7 +8,7 @@
 const { performSqlQuery } = require('../../database/dbconnection');
 
 async function partEmailCheck(partnerData) {
-    const role = partnerData["role"];
+    const role = partnerData["user_role"];
     const emailToCheck = partnerData["user_email"];
 
     if (role === "seller") {
@@ -17,7 +17,7 @@ async function partEmailCheck(partnerData) {
     else if(role === "doctor"){
         return await checkDoctor(emailToCheck);
     }
-    else if(role === "delivery-part"){
+    else if(role === "delivery"){
         return await checkDelivery(emailToCheck);
     }
     else{
@@ -63,10 +63,10 @@ async function checkDelivery(email) {
     var q = 'SELECT delivery_part_email FROM `testingdb`.`delivery_part_creds`;';
     try {
         const result = await performSqlQuery(q);
-        const delivery_part_email = result.rows;
-
-        for (let i = 0; i < delivery_part_email.length; i++) {
-            if (delivery_part_email[i].delivery_email === email) {
+        const delivery_part_emails = result.rows;
+        console.log(delivery_part_emails);
+        for (let i = 0; i < delivery_part_emails.length; i++) {
+            if (delivery_part_emails[i].delivery_part_email === email) {
                 return false;
             }
         }
@@ -77,12 +77,7 @@ async function checkDelivery(email) {
     }
 }
 
-// Using an async function to wait for the result
-async function runExample() {
-    let a = await partEmailCheck({ "user_email": "jaiswalkush8@gmail.com", "role": "doctor" });
-    console.log(a);
+
+module.exports ={
+    partEmailCheck
 }
-
-runExample();
-
-//Export this function!
