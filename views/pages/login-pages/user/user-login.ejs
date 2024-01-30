@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Login</title>
     <link rel="stylesheet" href="css/reg-login/user-reg.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <body>
@@ -32,9 +32,9 @@
         <div class="form-container">
             <div class="form-content">
                 <div class="form-heading">
-                    <h1>Register</h1>
+                    <h1>Login</h1>
                 </div>
-            <form action="/register-customer" method="post" class="reg-form" id="reg-form">
+            <form action="/customer-login" method="post" class="reg-form" id="reg-form">
                 <div class="email-cont">
                     <label for="">Email</label><br>
                     <input name="email" id="email" type="text"></input>
@@ -46,13 +46,13 @@
                 </div>
                 <div class="submit-cont">
                     <button type="submit" id="submit">
-                        Register
+                        Login
                     </button>
                 </div>
             </form>
             <div class="login-cont">
-                Already a user?
-                <a href="/customer-login">Login</a>
+                Not a user? 
+                <a href="/register-customer">Register here.</a>
             </div>
             </div>
         </div>
