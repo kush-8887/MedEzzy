@@ -20,6 +20,27 @@ function custEmailCheck(userData) {
         });
 }
 
+function custEmailCheckLogin(userData) {
+    const q = 'SELECT cust_email FROM `testingdb`.`cust_creds`;';
+    const emailToCheck = userData["email"];
+
+    return performSqlQuery(q)
+        .then(result => {
+            const user_email = result.rows;
+
+            for (var i = 0; i < user_email.length; i++) {
+                if (user_email[i].cust_email === emailToCheck) {
+                    return true;
+                }
+            }
+            return false;
+        })
+        .catch(error => {
+            console.error("Error performing SQL query:", error);
+        });
+}
+
 module.exports ={
     custEmailCheck,
+    custEmailCheckLogin
 };
