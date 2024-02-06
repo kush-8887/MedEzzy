@@ -46,7 +46,10 @@ router.post('/register-customer', async(req,res)=>{
                 //Upload to the database
                 const db_status = await uploadCustomer(userData);
                 if (db_status) {
-                    res.send("done"); //Link it to login page!
+                    res.render('pages/login-pages/user/user-login.ejs',{
+                        message: "",
+                        display: "none",
+                    });
                 } else {
                     return res.status(500).json({ error: "An error occured!" });
                 }

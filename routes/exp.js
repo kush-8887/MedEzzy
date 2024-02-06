@@ -5,6 +5,6 @@ const router = require('express').Router();
 
 
 router.get('/shop',verifyToken('customer'),(req, res) => {
-    res.render('pages/page-after-login.ejs');
+    res.render('pages/shop-pages/main-shop.ejs');
 });
 module.exports = router;

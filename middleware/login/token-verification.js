@@ -6,11 +6,12 @@ const { verify } = require('jsonwebtoken');
 function verifyToken(role){
     return async (req, res, next) => {
         let accessToken = req.cookies["access-token"];
-        
         if (!accessToken) {
-            return res.status(400).json({ "error": "Access Restricted! Token not provided" });
+            return res.render('pages/login-pages/user/user-login.ejs',{
+                message: "",
+                display: "none",
+            });
         }
-
         try {
             const validToken = verify(accessToken, 'secretKey');
             const allowedRole = validToken["userInfo"]["user_role"];
