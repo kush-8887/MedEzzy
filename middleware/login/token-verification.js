@@ -7,10 +7,16 @@ function verifyToken(role){
     return async (req, res, next) => {
         let accessToken = req.cookies["access-token"];
         if (!accessToken) {
-            return res.render('pages/login-pages/user/user-login.ejs',{
-                message: "",
-                display: "none",
-            });
+            //Render page according to role!
+            if(role === "customer"){
+                return res.render('pages/login-pages/user/user-login.ejs',{
+                    message: "",
+                    display: "none",
+                });
+            }
+            else{
+                return res.send("Internal server error! Please check middleware")
+            }
         }
         try {
             const validToken = verify(accessToken, 'secretKey');
