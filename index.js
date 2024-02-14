@@ -7,8 +7,9 @@ app.set('view engine', 'ejs');
 
 //External Routes
 const custRegisterRoute = require('./routes/registerations/cust-reg-handler');
-const partRegisterRoute = require('./routes/registerations/partner-reg-handler');
 const custLoginRoute = require('./routes/login/cust-login');
+const partRegisterRoute = require('./routes/registerations/partner-reg-handler');
+const partLoginRoute = require('./routes/login/partner-login.js');
 const shopRoutes = require('./routes/exp.js');
 
 //Middlewares
@@ -27,6 +28,7 @@ app.use(cookieParser());
 app.use('/',custRegisterRoute);
 app.use('/',partRegisterRoute);
 app.use('/',custLoginRoute);
+app.use('/',partLoginRoute);
 app.use('/',shopRoutes);
 app.get('/',(req,res)=>{
     res.render('pages/main-home.ejs');

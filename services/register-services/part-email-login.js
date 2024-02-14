@@ -1,14 +1,15 @@
+//Checks if email exist of respective partner , return true if found
+
 /*
     IT WORKS SOMEHOW LOL
     This function takes in a partnerData with role
     The table to be searched is selected according to the role of user
 
-    if email is found we return false
-    (since we dont register if email exist)
+    if email is not found we return false
 */
 const { performSqlQuery } = require('../../database/dbconnection');
 
-async function partEmailCheck(partnerData) {
+async function partEmailCheckLogin(partnerData) {
     const role = partnerData["user_role"];
     const emailToCheck = partnerData["user_email"];
 
@@ -34,7 +35,7 @@ async function checkSeller(email) {
 
         for (let i = 0; i < seller_email.length; i++) {
             if (seller_email[i].seller_email === email) {
-                return false;
+                return true;
             }
         }
         return true;
@@ -51,7 +52,7 @@ async function checkDoctor(email) {
 
         for (let i = 0; i < doctor_email.length; i++) {
             if (doctor_email[i].doctor_email === email) {
-                return false;
+                return true;
             }
         }
         return true;
@@ -65,10 +66,9 @@ async function checkDelivery(email) {
     try {
         const result = await performSqlQuery(q);
         const delivery_part_emails = result.rows;
-        console.log(delivery_part_emails);
         for (let i = 0; i < delivery_part_emails.length; i++) {
             if (delivery_part_emails[i].delivery_part_email === email) {
-                return false;
+                return true;
             }
         }
         return true;
@@ -80,5 +80,5 @@ async function checkDelivery(email) {
 
 
 module.exports ={
-    partEmailCheck
+    partEmailCheckLogin
 }

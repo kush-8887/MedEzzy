@@ -1,10 +1,6 @@
 const router = require("express").Router();
-const jwt = require("jsonwebtoken");
-const rand = require("random-key");
 
-const {
-  custEmailCheckLogin,
-} = require("../../services/register-services/cust-email-check");
+const {custEmailCheckLogin,} = require("../../services/register-services/cust-email-check");
 const { custPassCheck } = require("../../services/register-services/user-pass");
 const { createToken } = require("../../server/jwt/cust-jwt");
 
@@ -18,8 +14,8 @@ router.get("/customer-login", async (req, res) => {
 
 router.post("/customer-login", async (req, res) => {
   const userData = {
-    email: req.body.email,
-    pass: req.body.pass,
+    user_email: req.body.email,
+    user_pass: req.body.pass,
   };
 
   //Check if email exists (it works magically)

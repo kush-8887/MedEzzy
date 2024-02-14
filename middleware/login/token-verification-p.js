@@ -3,25 +3,36 @@
 */
 const { verify } = require('jsonwebtoken');
 
-function verifyCustToken(role){
-    return async (req, res, next) => {
-        let accessToken = req.cookies["access-token"];
-        if (!accessToken) {
-            //Render page according to role!
-            if(role === "customer"){
-                return res.render('pages/login-pages/user/user-login.ejs',{
+function verifyPartToken(role){
+    return async (req,res,next) => {
+        console.log(req.cookies);
+        //Use different types of cookie name!
+        let accessToken = req.cookies["access-token-p"];
+        if(!accessToken){
+            if(role === "seller"){
+                return res.render('pages/login-pages/partner/seller-login.ejs',{
                     message: "Login first to access the page",
                     display: "flex",
-                });
+                })
+            }
+            if(role === "delivery"){
+                return res.render('',{
+
+                })
+            }
+            if(role === "doctor"){
+                return res.render('',{
+
+                })
             }
             else{
-                return res.send("Internal server error! Please check middleware")
+
             }
         }
         try {
             const validToken = verify(accessToken, 'secretKey');
             const allowedRole = validToken["userInfo"]["user_role"];
-            
+
             if (validToken && allowedRole === role) {
                 req.authenticated = true;
                 return next();
@@ -33,9 +44,9 @@ function verifyCustToken(role){
             console.error('Error verifying token:', error.message);
             return res.status(400).json({ "error": "Access Restricted! Token not verified" });
         }
-    };
+    }
 }
 
 module.exports = {
-    verifyCustToken: verifyCustToken,
-};
+    verifyPartToken : verifyPartToken
+}

@@ -3,7 +3,7 @@ const {sign,verify} = require('jsonwebtoken');
 
 //This function fetches important NONSENSITIVE data to send with jwt
 async function fetchData(userData) {
-    const q = `SELECT cust_email,cust_id,cust_cart_id,cust_role FROM \`testingdb\`.\`cust_creds\` WHERE cust_email="${userData["email"]}";`
+    const q = `SELECT cust_email,cust_id,cust_cart_id,cust_role FROM \`testingdb\`.\`cust_creds\` WHERE cust_email="${userData["user_email"]}";`
 
     return performSqlQuery(q).then(
         result =>{
