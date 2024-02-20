@@ -28,7 +28,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>   
         <% } %> 
-                 
+        
+        <% if (role == "seller") { %>
+        <!-- seller form -->
         <div class="form-container">
             <div class="form-content">
                 <div class="form-heading">
@@ -56,6 +58,65 @@
             </div>
             </div>
         </div>
+        <% } else if(role == "delivery") {%>
+        <!-- delivery form -->
+        <div class="form-container">
+            <div class="form-content">
+                <div class="form-heading">
+                    <h1>Seller Login</h1>
+                </div>
+            <form action="/login-delivery" method="post" class="reg-form" id="reg-form">
+                <div class="email-cont">
+                    <label for="">Email</label><br>
+                    <input name="email" id="email" type="text"></input>
+                </div>
+                
+                <div class="pass-cont">
+                    <label for="">Password</label><br>
+                    <input name="pass" id="pass" type="password"></input>
+                </div>
+                <div class="submit-cont">
+                    <button type="submit" id="submit">
+                        Login
+                    </button>
+                </div>
+            </form>
+            <div class="login-cont">
+                Not a user? 
+                <a href="/register-seller">Register here.</a>
+            </div>
+            </div>
+        </div>
+        <% } else if(role == "doctor") { %>
+        <!-- doctor-form -->
+        <div class="form-container">
+                <div class="form-content">
+                    <div class="form-heading">
+                        <h1>Doctor Login</h1>
+                    </div>
+                <form action="/login-doctor" method="post" class="reg-form" id="reg-form">
+                    <div class="email-cont">
+                        <label for="">Email</label><br>
+                        <input name="email" id="email" type="text"></input>
+                    </div>
+                    
+                    <div class="pass-cont">
+                        <label for="">Password</label><br>
+                        <input name="pass" id="pass" type="password"></input>
+                    </div>
+                    <div class="submit-cont">
+                        <button type="submit" id="submit">
+                            Login
+                        </button>
+                    </div>
+                </form>
+                <div class="login-cont">
+                    Not a user? 
+                    <a href="/register-doctor">Register here.</a>
+                </div>
+                </div>
+        </div>
+        <% } %>
     </div>
 </body>
 <script src="js/reg-login/reg-user.js"></script>

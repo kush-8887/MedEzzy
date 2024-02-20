@@ -32,7 +32,6 @@ router.post('/register-customer', async(req,res)=>{
             "cust_role": "customer",
             "cust_cart_id":rand.generateBase30(30)
         };
-        console.log(userData);
     }catch (error) {
         console.error("Error:", error);
         return res.status(500).json({ error: "Internal Server Error" });
@@ -40,7 +39,6 @@ router.post('/register-customer', async(req,res)=>{
     //Check if email already exists in db
     try{
         var emailExist = await custEmailCheck(userData);
-        console.log(emailExist);
         if(emailExist){
             try {
                 //Upload to the database

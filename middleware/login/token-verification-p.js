@@ -1,34 +1,46 @@
 /*
     This function takes a role parameter and only allows the role to that route
+
+    Token names -
+    1) seller - access-token-p
+    2) delivery - access-token-d
+    3) doctor - access-token-do
 */
 const { verify } = require('jsonwebtoken');
 
 function verifyPartToken(role){
     return async (req,res,next) => {
-        console.log(req.cookies);
-        //Use different types of cookie name!
-        let accessToken = req.cookies["access-token-p"];
-        if(!accessToken){
+        let accessToken;
+        
+        //Get access token according to role
+        try{
             if(role === "seller"){
-                return res.render('pages/login-pages/partner/seller-login.ejs',{
-                    message: "Login first to access the page",
-                    display: "flex",
-                })
+                accessToken = req.cookies["access-token-p"];
             }
-            if(role === "delivery"){
-                return res.render('',{
-
-                })
+            else if(role === "delivery"){
+                accessToken = req.cookies["access-token-d"];
             }
-            if(role === "doctor"){
-                return res.render('',{
-
-                })
+            else if(role === "doctor"){
+                accessToken = req.cookies["access-token-doc"];
             }
             else{
-
+                throw new Error("Role not provided")
             }
+        }catch(error){
+            console.error('Role not provided: ',error.message);
+            return res.status(400).json({ "error": "Access Restricted! Token not verified" });
         }
+
+        //If token not found
+        if(!accessToken){
+            return res.render('pages/login-pages/partner/partner-login.ejs',{
+                message: "Login first to access the page",
+                display: "flex",
+                role: `${role}`
+            })
+        }
+
+        //Validating token
         try {
             const validToken = verify(accessToken, 'secretKey');
             const allowedRole = validToken["userInfo"]["user_role"];
@@ -40,9 +52,12 @@ function verifyPartToken(role){
                 throw new Error("Invalid token");
             }
         } catch (error) {
-            //Enter you are not logged in page and link to login
             console.error('Error verifying token:', error.message);
-            return res.status(400).json({ "error": "Access Restricted! Token not verified" });
+            return res.render('pages/login-pages/partner/partner-login.ejs',{
+                message: "Unable to verify user! Login again",
+                display: "flex",
+                role: `${role}`
+            })
         }
     }
 }
