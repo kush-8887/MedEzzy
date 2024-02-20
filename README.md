@@ -80,3 +80,16 @@ Following describes the best CSS practices and the rules we are following with o
 	/*Additional color!*/
 	Your variables here
 	}
+
+#Token Format
+To ensure consistency and elimination of errors , each login-token must be in a format!
+
+This format is to be followed for email ,pass and role . Other entities may vary according to user type.
+```javascript
+{
+	user_email : "email",
+	user_pass : "pass",
+	user_role : "role",
+	other_entities : ""
+}
+```

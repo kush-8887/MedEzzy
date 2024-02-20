@@ -50,7 +50,6 @@ router.post('/register-partner/:role',async(req,res)=>{
             "user_reg_time" : getDate.getTime(),
             "user_role" : role
         }
-        console.log(partnerData);
     }catch(error){
         console.error("Error:", error);
         return res.status(500).json({ error: "Internal Server Error" });
@@ -58,11 +57,9 @@ router.post('/register-partner/:role',async(req,res)=>{
     //Check if email exist in db
     try{
         var emailExist = await partEmailCheck(partnerData);
-        console.log(emailExist);
 
         if(emailExist){
            const db_status = await uploadPartner(partnerData,role);
-           console.log(db_status);
            if(db_status){
                 res.send("done");
             } else {

@@ -4,8 +4,8 @@ const { performSqlQuery } = require('../../database/dbconnection');
 // to test email - sonyps4kushka@gmail.com pass- Kush@2004
 
 async function custPassCheck(userData) {
-    const q = `SELECT cust_pass FROM \`testingdb\`.\`cust_creds\` WHERE cust_email="${userData["email"]}";`;
-    const passToCheck = userData["pass"];
+    const q = `SELECT cust_pass FROM \`testingdb\`.\`cust_creds\` WHERE cust_email="${userData["user_email"]}";`;
+    const passToCheck = userData["user_pass"];
 
     return performSqlQuery(q)
         .then(async (result) => {

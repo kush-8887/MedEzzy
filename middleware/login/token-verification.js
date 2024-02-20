@@ -3,14 +3,20 @@
 */
 const { verify } = require('jsonwebtoken');
 
-function verifyToken(role){
+function verifyCustToken(role){
     return async (req, res, next) => {
         let accessToken = req.cookies["access-token"];
         if (!accessToken) {
-            return res.render('pages/login-pages/user/user-login.ejs',{
-                message: "",
-                display: "none",
-            });
+            //Render page according to role!
+            if(role === "customer"){
+                return res.render('pages/login-pages/user/user-login.ejs',{
+                    message: "Login first to access the page",
+                    display: "flex",
+                });
+            }
+            else{
+                return res.send("Internal server error! Please check middleware")
+            }
         }
         try {
             const validToken = verify(accessToken, 'secretKey');
@@ -23,6 +29,7 @@ function verifyToken(role){
                 throw new Error("Invalid token");
             }
         } catch (error) {
+            //Enter you are not logged in page and link to login
             console.error('Error verifying token:', error.message);
             return res.status(400).json({ "error": "Access Restricted! Token not verified" });
         }
@@ -30,5 +37,5 @@ function verifyToken(role){
 }
 
 module.exports = {
-    verifyToken: verifyToken
+    verifyCustToken: verifyCustToken,
 };

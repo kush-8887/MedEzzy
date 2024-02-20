@@ -1,6 +1,6 @@
 const { performSqlQuery } = require('../../database/dbconnection');
 
-function custEmailCheck(userData) {
+async function custEmailCheck(userData) {
     const q = 'SELECT cust_email FROM `testingdb`.`cust_creds`;';
     const emailToCheck = userData.cust_email;
 
@@ -20,9 +20,9 @@ function custEmailCheck(userData) {
         });
 }
 
-function custEmailCheckLogin(userData) {
+async function custEmailCheckLogin(userData) {
     const q = 'SELECT cust_email FROM `testingdb`.`cust_creds`;';
-    const emailToCheck = userData["email"];
+    const emailToCheck = userData["user_email"];
 
     return performSqlQuery(q)
         .then(result => {
