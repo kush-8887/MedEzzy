@@ -10,7 +10,11 @@ const custRegisterRoute = require('./routes/registerations/cust-reg-handler');
 const custLoginRoute = require('./routes/login/cust-login');
 const partRegisterRoute = require('./routes/registerations/partner-reg-handler');
 const partLoginRoute = require('./routes/login/partner-login.js');
-const shopRoutes = require('./routes/exp.js');
+const shopRoutes = require('./routes/shop/shop-routes.js');
+
+//Api routes
+const productAPI = require('./server/api/products-api.js');
+const shopAPI = require('./server/api/shop-api.js');
 
 //Middlewares
 const {verifyToken} = require('./middleware/login/token-verification.js')
@@ -33,6 +37,10 @@ app.use('/',shopRoutes);
 app.get('/',(req,res)=>{
     res.render('pages/main-home.ejs');
 })
+
+//Api routes
+app.use('/',productAPI);
+app.use('/',shopAPI);
 
 //Server config
 app.listen(8080 ,() => {

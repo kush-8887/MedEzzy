@@ -9,10 +9,12 @@ function verifyCustToken(role){
         if (!accessToken) {
             //Render page according to role!
             if(role === "customer"){
-                return res.render('pages/login-pages/user/user-login.ejs',{
-                    message: "Login first to access the page",
-                    display: "flex",
-                });
+                // return res.render('pages/login-pages/user/user-login.ejs',{
+                //     message: "Login first to access the page",
+                //     display: "flex",
+                // });
+                //This can be a temproary fix
+                return res.redirect('/customer-login');
             }
             else{
                 return res.send("Internal server error! Please check middleware")
