@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    #cont{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+        .item-card{
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    height: fit-content;
+    width: 100%;
+    padding: 20px;
+    min-height: 100%;
+}
+.item-card:hover{
+    box-shadow: 0 1px 20px 0 rgba(0,0,0,.25);
+}
+.item-info{
+    margin-top: 10px;
+}
+.item-img{
+    position: relative;
+    text-align: center;
+    height: 200px;
+    width: 100%;
+}
+.item-img-fix-div{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.item-img img{
+    max-width: 100%;
+    max-height: 100% ;
+}
+.item-price-util{
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    margin-top: 20px;
+}
+.item-name{
+    font-size: 21px;
+}
+.item-name a{
+    color:#000;
+    text-decoration: none;
+}
+.item-name a:hover{
+    color: var(--background-color);
+}
+.discounted-price{
+    font-size: 23px;
+    font-weight: bold;
+}
+.item-action-btns{
+    margin-top: 10px;
+}
+    </style>
+</head>
+<body>
+    <button class="pag-btn" id="p-btn">Prev</button>
+    <label for="" id="page-no">1</label>
+    <button class="pag-btn" id="n-btn">Next</button>
+
+    <div id="cont">
+
+    </div>
+
+</body>
+<script>
+    
+    let cont = document.getElementById('cont');
+    let p = document.getElementById('p-btn');
+    let n = document.getElementById('n-btn');
+    let page = parseInt(document.getElementById('page-no').textContent);
+    let data ;
+
+    p.addEventListener('click',async()=>{
+        if(page === 1){
+            console.log('already at 1');
+            document.getElementById('page-no').textContent = page;
+            data = await get(page);
+            put(data,cont);
+        }
+        else{
+            page -= 1;
+            console.log(page);
+            document.getElementById('page-no').textContent = page;
+            data = await get(page);
+            put(data,cont);
+        }
+    })
+    n.addEventListener('click',async()=>{
+        page += 1;
+        document.getElementById('page-no').textContent = page;
+        data = await get(page);
+        put(data,cont);
+    })
+
+    async function get(page){
+        let res = await fetch(`http://localhost:8080/shop/v1/getitem/${page}`);
+        let d = await res.json();
+        return d;
+    }
+    function put(data,c){
+        c.innerHTML = '';
+        data.forEach(item => {
+                cont.innerHTML += `<div class="item-card">
+            <div class="item-img">
+                <div class="floating-menu">
+                    <button id="view-item">
+                        <svg  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="12" r="3.5" stroke="#fff"></circle> <path d="M21 12C21 12 20 4 12 4C4 4 3 12 3 12" stroke="#fff"></path> </g></svg>
+                    </button>
+                </div>
+                <div class="item-img-fix-div">
+                    <img src="${item["med_image_url"]}" alt="">
+                </div>
+            </div>
+            <div class="item-info">
+                <div class="item-name">
+                    <a href="/shop/item/${item.med_id}" target="_blank" rel="noopener noreferrer">${item.med_name}</a>
+                </div>
+                <div class="item-price-cont">
+                    <div class="item-price-util">
+                        <div class="original-price" style="color:grey; text-decoration:line-through;">MRP:₹${item.med_price}</div>
+                        <div class="discount-percentage" style="color:red;">${item.med_dist}% OFF</div>
+                    </div>
+                    <div class="discounted-price">
+                    ₹${item.med_price - (Math.floor(item.med_price * item.med_dist / 100))}
+                    </div>
+                </div>
+                <div class="item-action-btns">
+                    <button class="action-btn" id="addToCart">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>`
+            });
+    }
+
+</script>
+</html>
