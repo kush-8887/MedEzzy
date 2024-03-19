@@ -1,5 +1,6 @@
 const { verifyCustToken} = require('../../middleware/login/token-verification');
 const { getMedDetails } = require('../../services/shop-services.js/get-items');
+const { jwtDecode } = require('jwt-decode');
 
 const router = require('express').Router();
 
@@ -32,8 +33,24 @@ router.get('/shop/item/:id',verifyCustToken('customer'),async(req,res)=>{
     }
 });
 
-router.get('',async(req,res)=>{
+//shop cart route
+router.get('/shop/cart1',verifyCustToken('customer'),(req,res)=>{
+    let user_data = jwtDecode(req.cookies["access-token"])
+    let cart_id = user_data.userInfo["user_cart_id"];
 
+    if(cart_id === ''){
+        res.send('Not authorized');
+    }
+    else{
+        res.render('pages/shop-pages/cart.ejs')
+    }
+})
+
+//Full shop route
+router.get('/shop/shopfull',verifyCustToken('customer'),(req,res)=>{
+    res.render(
+        'pages/shop-pages/shop-full.ejs'
+    )
 })
 
 module.exports = router;

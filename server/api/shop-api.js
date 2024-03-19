@@ -103,7 +103,6 @@ router.get('/shop/v1/getitem/:page', async (req, res) => {
     } catch (error) {
       res.status(500).send("Internal server error");
     }
-  });
-
+});
 
 module.exports = router;
