@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/shop-css/cart.css">
+    <link rel="stylesheet" href="/css/utils/shop/shop-mobile-nav.css">
+    <link rel="stylesheet" href="/css/utils/shop/shop-nav.css">
+    <link rel="stylesheet" href="/css/utils/footer.css">
+    <title>Cart</title>
+</head>
+
+<body>
+    <!-- mobile-navbar -->
+    <%- include("../../partials/shop/mobile-nav.ejs"); %>
+    <!-- main navbar -->
+    <%- include("../../partials/shop/main-nav.ejs"); %>
+    <div class="page-color">
+        <div class="cart-container">
+            <div class="cart">
+                <div class="cart-headers">
+                    <h2 class="main-head" id="cart-head">Cart</h2>
+                    <div class="update-cart-cont">
+                </div>
+                    <button id="update-cart">Update Cart</button>
+                </div>
+                <div class="cart-items" id="cart-item-cont"></div>
+            </div>
+            <div class="cart-total">
+                <div class="cart-total-decor">
+                    <div class="cart-total-container">
+                        <div class="sub-head">
+                            Cart Total
+                        </div>
+                        <div id="cart-subtotal-cont" class="cart-totals">
+                            <div class="amnt-spacing">
+                                Subtotal: <div class="amnt-cont" id="cart-subtotal"></div>
+                            </div>
+                        </div>
+                        <div id="cart-total-cont" class="cart-totals">
+                            <div class="amnt-spacing">
+                                Total: <div class="amnt-cont" id="cart-total"></div>
+                            </div>
+                        </div>
+                        <div class="check-out-cont">
+                            <button id="checkout-btn">
+                                PROCEED TO CHECKOUT
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include("../../partials/utils/footer.ejs"); %> 
+</body>
+<script src="/js/utils/hamburger.js"></script>
+<script src="/js/shop-main/cart.js"></script>
+</html>

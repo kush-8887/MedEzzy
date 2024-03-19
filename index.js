@@ -15,6 +15,7 @@ const shopRoutes = require('./routes/shop/shop-routes.js');
 //Api routes
 const productAPI = require('./server/api/products-api.js');
 const shopAPI = require('./server/api/shop-api.js');
+const cartAPI = require('./server/api/cart-api.js');
 
 //Middlewares
 const {verifyToken} = require('./middleware/login/token-verification.js')
@@ -41,6 +42,7 @@ app.get('/',(req,res)=>{
 //Api routes
 app.use('/',productAPI);
 app.use('/',shopAPI);
+app.use('/',cartAPI);
 
 //Server config
 app.listen(8080 ,() => {

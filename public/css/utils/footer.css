@@ -1,4 +1,7 @@
-
+.spacing-utility {
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
 .footer{
     background-color: var(--main-purple);
     color: var(--white);

@@ -41,6 +41,7 @@ router.get('/products/v1/med/single-med/:medid',async(req,res)=>{
             const q = `SELECT * FROM \`testingdb\`.\`med_info\` WHERE med_id = "${med_id}";`
             const data = await performSqlQuery(q);
             if(data.length != 0){
+                // console.log(data["rows"]);
                 res.status(200).send(data["rows"]);
             }
             else{
