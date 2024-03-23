@@ -3,7 +3,6 @@ const { performSqlQuery } = require('../../database/dbconnection');
 //upload cart to the database
 async function uploadCart(data){
     try {
-        // const q = `INSERT INTO testingdb.cart (cart_id, product_id, product_name, product_img,product_quantity,product_price,product_subtotal) VALUES ("${data.cartId}", "${data.product.productId}", "${data.product.img}", ${data.product.quantity},${data.product.amount},${data.product.quantity * data.product.amount})`;
         const q = `INSERT INTO testingdb.cart (
             cart_id, 
             product_id, 
@@ -36,6 +35,30 @@ async function uploadCart(data){
     }
 }
 
+//Update cart total when item is added to the cart total
+async function addGrandTotal(data) {
+    // Amount to be added
+    let amnt = data.product.amount;
+    let cartId = data.cartId;
+
+    //Query
+    const q = `SELECT cart_total FROM testingdb.cart_creds WHERE cust_cart_id = "${cartId}"`;
+
+    try {
+        //Get the current total
+        let result = await performSqlQuery(q);
+        let currentTotal = result.rows[0].cart_total;
+        let newTotal = currentTotal + amnt;
+
+        //Add new amount and update
+        const updateQuery = `UPDATE testingdb.cart_creds SET cart_total = ${newTotal} WHERE cust_cart_id = "${cartId}"`;
+        await performSqlQuery(updateQuery);
+    } catch (error) {
+        console.log(error);
+        throw new Error("Cannot update grand total (addToCart)");
+    }
+}
+
 //Get items from cart;
 async function getCart(cartID){
     const q = `SELECT * from testingdb.cart WHERE cart_id = "${cartID}"`
@@ -43,6 +66,7 @@ async function getCart(cartID){
     return (res["rows"]);
 }
 
+// update functions
 //Update cart items 
 async function updateCart(userId,data){
     let q ;
@@ -62,7 +86,8 @@ async function updateCart(userId,data){
     }
 }
 
-//Update the cart grand total in cart_creds
+//Update the cart grand total in cart_creds 
+//This function works only when cart it updated NOT when items is added to cart
 async function updateGrandTotal(userId,data){
     let total = data["grand"];
     const q = `UPDATE testingdb.cart_creds SET cart_total = ${total} WHERE cust_cart_id = "${userId}"`
@@ -73,6 +98,7 @@ async function updateGrandTotal(userId,data){
     }
 }
 
+// Delete functions
 //Delete items from cart!
 async function deleteItemCart(userId,data){
     let productId = data["productId"];
@@ -121,5 +147,6 @@ module.exports = {
     updateCart,
     updateGrandTotal,
     deleteItemCart,
-    updateDeleteGrand
+    updateDeleteGrand,
+    addGrandTotal
 }

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {uploadCart,getCart,updateCart,updateGrandTotal,deleteItemCart ,updateDeleteGrand} = require('../../services/shop-services.js/cart-service');
+const {uploadCart,getCart,updateCart,updateGrandTotal,deleteItemCart ,updateDeleteGrand,addGrandTotal} = require('../../services/shop-services.js/cart-service');
 const { jwtDecode } = require('jwt-decode');
 
 //Get cart from the database with cartID
@@ -17,33 +17,39 @@ router.get('/getcart',async(req,res)=>{
 });
 
 //Upload cart to the database with cartid
-router.post('/addtocart/:pid',async(req,res)=>{
+router.post('/addtocart/:pid', async (req, res) => {
     try {
         let userData = jwtDecode(req.cookies["access-token"]);
         const cartId = userData.userInfo["user_cart_id"];
         const details = req.body;
         
-        if(cartId === '' || details === ''){
-            res.status(500).send('Internal server error')
-        }
-        else{
-            let data = {
-                cartId : cartId,
-                product : details
-            }
-            let status =  uploadCart(data);
-            if(status){
-                res.sendStatus(200);
-            }
-            else if(status === "duplicate"){
-                res.send(500);
-            }
-            else{
-                res.sendStatus(500);
+        let data = {
+            cartId: cartId,
+            product: details
+        };
+        
+        //It cartid or data not found
+        if (!cartId || !details) {
+            return res.status(400).send('Bad Request');
+        } else {
+            //Upload to cart
+            let status = await uploadCart(data);
+            if (status) {
+                try {
+                    //Update the grand total in cart_creds
+                    await addGrandTotal(data); 
+                } catch (error) {
+                    return res.status(500).send("Internal server error! Unable to update Cart");
+                }
+                return res.sendStatus(200);
+            } else if (status === "duplicate") {
+                return res.status(400).send("Duplicate item in cart");
+            } else {
+                return res.status(500).send("Unable to add item.");
             }
         }
     } catch (error) {
-        res.status(500).send('Internal Server Error');
+        return res.status(500).send('Internal Server Error');
     }
 });
 
@@ -77,13 +83,14 @@ router.delete('/deleteitem',async(req,res)=>{
     try{
         await deleteItemCart(cartId,cart);
         await updateDeleteGrand(cartId,cart);
+        res.sendStatus(200);
     }catch (error) {
         console.error(error);
         res.status(500).send("Unable to delete cart item!");
     }
 
     //Automatic reload expected (fix if time!)
-    res.redirect('/shop/cart1');
+    
 });
 
 module.exports = router;
