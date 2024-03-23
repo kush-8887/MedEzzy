@@ -25,7 +25,7 @@ router.get('/shop/item/:id',verifyCustToken('customer'),async(req,res)=>{
 
     try{
         const med_info = await getMedDetails(id);
-        res.render('testpage.ejs',med_info[0]); //send the finished single item page (arush)
+        res.render('pages/shop-pages/single-item.ejs',med_info[0]); //send the finished single item page (arush)
     }
     catch(error){
         //Send an error page!

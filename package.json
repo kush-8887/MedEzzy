@@ -5,6 +5,7 @@
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "generic-pool": "^3.9.0",
+    "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
     "mysql2": "^3.7.0",

@@ -84,11 +84,11 @@ function eventListenerAdd() {
 }
 
 //Add event listeners to all delete btns
-function eventListenerAddDelete(){
-  const deleteBtns = document.getElementsByClassName('delete-item');
-  Array.from(deleteBtns).forEach(d =>{
-    d.addEventListener('click', () => deleteItem(d));
-  })
+function eventListenerAddDelete() {
+  const deleteBtns = document.getElementsByClassName("delete-item");
+  Array.from(deleteBtns).forEach((d) => {
+    d.addEventListener("click", () => deleteItem(d));
+  });
 }
 
 //Increase quantity function
@@ -124,36 +124,39 @@ function decreaseFunc(btn) {
 //Delete cart item
 async function deleteItem(d) {
   const productId = d.id.substring(2);
-  
+
   // Check if item is in CHANGE_ARRAY if item is removed before update
   if (CHANGE_ARRAY.hasOwnProperty(productId)) {
     delete CHANGE_ARRAY[productId];
   }
-  
+
   // Reduce the cart total
-  let itemSub = parseInt(document.getElementById(`sub-${productId}`).innerText.trim().substring(1));
+  let itemSub = parseInt(
+    document.getElementById(`sub-${productId}`).innerText.trim().substring(1)
+  );
   console.log(itemSub);
 
   // Delete from database
   try {
-    const response = await fetch('/deleteItem', {
+    const response = await fetch("/deleteItem", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         productId: productId,
-        sub_total : itemSub
-      })
+        sub_total: itemSub,
+      }),
     });
 
     if (response.ok) {
       console.log("Deleted!");
+      window.location.reload();
     } else {
-      console.error('Unable to delete');
+      console.error("Unable to delete");
     }
   } catch (error) {
-    console.log('Unexpected error occurred: ', error);
+    console.log("Unexpected error occurred: ", error);
   }
 }
 
@@ -216,9 +219,11 @@ function getGrandTotal() {
 
 //Update cart
 const updateBtn = document.getElementById("update-cart");
+const alertcontSucess = document.getElementById("alertcontSucess");
+const alertcontFail = document.getElementById("alertcontFail");
 updateBtn.addEventListener("click", async (e) => {
-    let grandTotal = getGrandTotal();
-    CHANGE_ARRAY["grand"] = grandTotal;
+  let grandTotal = getGrandTotal();
+  CHANGE_ARRAY["grand"] = grandTotal;
   e.preventDefault(); // Prevent the default form submission behavior
 
   // Assuming CHANGE_ARRAY is a global variable containing the cart data
@@ -232,8 +237,10 @@ updateBtn.addEventListener("click", async (e) => {
     .then((response) => {
       if (response.ok) {
         console.log("Cart updated successfully.");
+        alertcontSucess.style.display = "flex";
         CHANGE_ARRAY = {}; // Clear the CHANGE_ARRAY after successful update
       } else {
+        alertcontFail.style.display = "flex";
         console.error("Failed to update cart.");
       }
     })
