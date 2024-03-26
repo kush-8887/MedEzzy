@@ -60,27 +60,6 @@ router.get('/shop/v1/dealofday/:limit',async (req,res)=>{
 });
 
 //Returns all items in order (specified by a limit using pagination)
-// router.get('/shop/v1/getitem/:page', async (req, res) => {
-
-//     // Pagination implementation
-//     let page = req.params.page || 1;
-//     let limit = 50;
-
-//     let startIndex = (page - 1) * limit;
-//     let endIndex = startIndex + limit;
-
-//     console.log(startIndex, endIndex);
-
-//     try {
-//         let q = `SELECT med_id, med_name, med_image_url, med_price, med_dist FROM \`testingdb\`.\`med_info\` LIMIT ${startIndex}, ${endIndex}`;
-//         let data = await performSqlQuery(q);
-//         res.status(200).send(data["rows"]);
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).send("Internal server error")
-//     }
-// });
-
 router.get('/shop/v1/getitem/:page', async (req, res) => {
 
     // Pagination implementation
@@ -89,19 +68,26 @@ router.get('/shop/v1/getitem/:page', async (req, res) => {
   
     // Calculate offset based on page and limit
     let offset = (page - 1) * limit;
-  
-    try {
-      let q = `SELECT med_id, med_name, med_image_url, med_price, med_dist FROM \`testingdb\`.\`med_info\` LIMIT ${limit} OFFSET ${offset}`;
-  
-      let data = await performSqlQuery(q);
-  
-      if (data && data.rows && data.rows.length > 0) {
-        res.status(200).send(data.rows);
-      } else {
-        res.status(404).send({ message: "No items found" });
-      }
-    } catch (error) {
-      res.status(500).send("Internal server error");
+    
+    if(req.query.fil || req.query.cat){
+
+        //Create a db connection with filters and categories!
+        let filter = req.query.fil;
+        let cat = req.query.fil;
+    }
+    else{
+        try {
+          let q = `SELECT med_id, med_name, med_image_url, med_price, med_dist FROM \`testingdb\`.\`med_info\` LIMIT ${limit} OFFSET ${offset}`;
+      
+          let data = await performSqlQuery(q);
+          if (data && data.rows && data.rows.length > 0) {
+            res.status(200).send(data.rows);
+          } else {
+            res.status(404).send({ message: "No items found" });
+          }
+        } catch (error) {
+          res.status(500).send("Internal server error");
+        }
     }
 });
 

@@ -21,7 +21,11 @@ const cartAPI = require('./server/api/cart-api.js');
 const {verifyToken} = require('./middleware/login/token-verification.js')
 
 //Serving directory through express.static
-app.use(express.static(__dirname + '/public/'));
+app.use(express.static(__dirname + '/public/', {
+  mimeTypes: {
+    'js': 'application/javascript'
+  }
+}));
 app.use(express.static(__dirname + '/views/ '));
 
 //allow json parsing
