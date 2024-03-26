@@ -4,7 +4,8 @@ const decrease = document.getElementById('decrease');
 const itemContainer = document.getElementById('itemContainer');
 
 // Fetch link
-let baseUrl = 'http://localhost:8080/shop/v1/getitem/';
+// let baseUrl = 'http://localhost:8080/shop/v1/getitem/';
+let method_GLOBAL = "base";
 let filterArray = [];
 let categoriesArray = [];
 
@@ -28,7 +29,12 @@ let p = new Page();
 increase.addEventListener('click', async () => {
     let page = p.getPage() + 1;
     p.setPage(page);
-    fetchAndUpdate();
+    if(method_GLOBAL === "base"){
+        fetchAndUpdate();
+    }
+    else{
+        fetchSearch()
+    }
 });
 
 // Function to decrease page number
@@ -37,7 +43,12 @@ decrease.addEventListener('click', async () => {
     if (page > 1) {
         page -= 1;
         p.setPage(page);
-        fetchAndUpdate();
+        if(method_GLOBAL === "base"){
+            fetchAndUpdate();
+        }
+        else{
+            fetchSearch()
+        }
     }
 });
 
@@ -88,31 +99,62 @@ function addToFilt() {
 // Function to fetch data with filters and categories
 async function fetchAndUpdate() {
     let page = p.getPage();
-    let link = generateLink(page);
+    let link = generateLink(page,"base");
     const data = await fetchData(link);
     putData(data, itemContainer);
 }
 
 // Function to generate link with filters and categories
-function generateLink(page) {
-    let link = baseUrl + `${page}/?d=default`;
-    if (categoriesArray.length > 0 || filterArray.length > 0) {
+function generateLink(page, method) {
+    let baseUrl;
+    if (method === "base") {
+      baseUrl = "http://localhost:8080/shop/v1/getitem/";
+      let link = baseUrl + `${page}/?d=default`;
+      if (categoriesArray.length > 0 || filterArray.length > 0) {
         link += '&';
         if (categoriesArray.length > 0) {
-            link += categoriesArray.map(cat => `cat=${cat}`).join('&');
+          link += categoriesArray.map(cat => `cat=${cat}`).join('&');
         }
         if (filterArray.length > 0) {
-            link += filterArray.map(fil => `fil=${fil}`).join('&');
+          link += filterArray.map(fil => `fil=${fil}`).join('&');
         }
+        method_GLOBAL = "base";
+        console.log(link);
+        return link;
+      }
+      return link; // Return early if no categories or filters
     }
-    return link;
-}
+    if (method === "search") {
+      baseUrl = `http://localhost:8080/product/v1/search/`;
+      let link = baseUrl + `${page}/?d=default`;
+      method_GLOBAL = "search";
+      console.log(link);
+      return link;
+    }
+}  
 
 // Function to fetch data
 async function fetchData(link) {
     const res = await fetch(link);
     const data = await res.json();
     return data;
+}
+
+//Fetch search data
+async function fetchSearch(){
+    let page = p.getPage();
+    let searchWord = document.getElementById('searchBox').value;
+
+    let link = generateLink(page,"search")
+    const res = await fetch(link,{
+        method : "POST",
+        headers: {
+            'Content-Type': 'application/json' // Set appropriate content type
+          },
+          body: JSON.stringify({ q: searchWord })
+    });
+    const data = await res.json();
+    putData(data,itemContainer);
 }
 
 // Function to populate the page
@@ -167,6 +209,45 @@ function putData(data, parent) {
 }
 
 //add addToCart eventlistners.
+
+
+//Search functionalities 
+let searchBtn = document.getElementById('searchBtn');
+searchBtn.addEventListener('click', async (e) => {
+  e.preventDefault();
+
+  let page = p.getPage();
+  let searchWord = document.getElementById('searchBox').value;
+
+  if (searchWord === '') {
+    window.alert("Search cannot be empty");
+    return; // Exit the function if search word is empty
+  }
+  
+  let link = generateLink(page,"search");
+
+  try {
+    const response = await fetch(link, {
+      method: 'POST', // Use POST for search requests
+      headers: {
+        'Content-Type': 'application/json' // Set appropriate content type
+      },
+      body: JSON.stringify({ q: searchWord }) // Send search term as JSON in request body
+    });
+
+    if (!response.ok) {
+      throw new Error(`Search request failed with status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    putData(data,itemContainer)
+    // Handle the received data (e.g., display search results)
+    console.log("Search results:", data); // Replace with your logic to display data
+  } catch (error) {
+    window.alert("An error occurred during the search: " + error.message);
+  }
+});
+
 
 document.addEventListener("DOMContentLoaded", () => {
     getCategories();
