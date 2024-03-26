@@ -99,7 +99,7 @@
 .item-container {
     display: grid;
     column-gap:2% ;
-    row-gap: 2%;
+    row-gap: 10px;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
@@ -259,6 +259,11 @@
     flex-direction: column;
     position:fixed !important;
     width:100%;
+}
+
+.categories-cont{
+    display: flex;
+    align-items: center;
 }
 
 /* important  */

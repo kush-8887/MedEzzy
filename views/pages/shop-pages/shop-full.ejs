@@ -50,40 +50,47 @@
                 <h3>Filters </h3>
                 <hr>
                 <ul>
-                    <!-- <li><a href="">Best seller</a></li>
-                    <li><a href="">Best seller</a></li>
-                    <li><a href="">Best seller</a></li> -->
-                    <input type="checkbox" name="a" id=""> Best Sellers
-                    <input type="checkbox" name="a" id=""> Deals of the day
+                    <input type="checkbox" name="a" id="best"> Best Sellers
+                    <input type="checkbox" name="a" id="deal"> Deals of the day
                 </ul>
             </section>
             <section class="categories">
                 <h3>Categories</h3>
                 <hr>
                 <ul>
-                    <!-- <li><a href="">Cancer</a></li>
-                    <li><a href="">Fever</a></li>
-                    <li><a href="">Cough</a></li>
-                    <li><a href="">Painkillers</a></li>
-                    <li><a href="">Acne</a></li>
-                    <li><a href="">Diabetes</a></li>
-                    <li><a href="">Heart</a></li>
-                    <li><a href="">Hair loss</a></li>
-                    <li><a href="">Depression</a></li>
-                    <li><a href="">Asthma</a></li>
-                    <li><a href="">Schizophrenia</a></li>
-                    <li><a href="">Migrane</a></li> -->
-                    <input type="checkbox" name="" id=""> Cancer
-                    <input type="checkbox" name="" id=""> Fever
-                    <input type="checkbox" name="" id=""> Painkillers
-                    <input type="checkbox" name="" id=""> Acne
-                    <input type="checkbox" name="" id=""> Diabetes
-                    <input type="checkbox" name="" id=""> Heart
-                    <input type="checkbox" name="" id=""> Hair loss
-                    <input type="checkbox" name="" id=""> Depression
-                    <input type="checkbox" name="" id=""> Asthma
-                    <input type="checkbox" name="" id=""> Schizophrenia
-                    <input type="checkbox" name="" id=""> Migrane
+                    <div class="categories-cont">
+                        <input type="checkbox" name="category" id="Cancer"> Cancer
+                    </div>
+                    <div class="categories-cont">
+                        <input type="checkbox" name="category" id="Fever"> Fever
+                    </div>
+                    <div class="categories-cont">
+                        <input type="checkbox" name="category" id="Painkillers"> Painkillers
+                    </div>
+                    <div class="categories-cont">
+                        <input type="checkbox" name="category" id="Acne"> Acne
+                    </div>
+                    <div class="categories-cont">
+                        <input type="checkbox" name="category" id="Diabetes"> Diabetes
+                    </div>
+                    <div class="categories-cont">
+                        <input type="checkbox" name="category" id="Heart"> Heart
+                    </div>
+                    <div class="categories-cont">
+                        <input type="checkbox" name="category" id="Hair loss"> Hair loss
+                    </div>
+                    <div class="categories-cont">
+                        <input type="checkbox" name="category" id="Depression"> Depression
+                    </div>
+                    <div class="categories-cont">
+                        <input type="checkbox" name="category" id="Asthma"> Asthma
+                    </div>
+                    <div class="categories-cont">
+                        <input type="checkbox" name="category" id="Schizophrenia"> Schizophrenia
+                    </div>
+                    <div class="categories-cont">
+                        <input type="checkbox" name="category" id="Migrane"> Migrane
+                    </div>
                 </ul>
             </section>
 
@@ -95,293 +102,12 @@
                 <p>Showing Results</p>
 
                 <div class="pages">
-                    <button type="button">&#8249;</button>
-                    <label for="number" style="    margin-right: 6px;">1</label>
-                    <button type="button">&#8250;</button>
+                    <button type="button" id="decrease">&#8249;</button>
+                    <input for="number" style="margin-right: 6px;" id="page-no" value="1"></input>
+                    <button type="button" id="increase">&#8250;</button>
                 </div>
             </div>
-            <div class="item-container">
-
-                <div class="item-card">
-                    <div class="item-img">
-                        <div class="floating-menu">
-                            <button id="view-item">
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                    <g id="SVGRepo_iconCarrier">
-                                        <circle cx="12" cy="12" r="3.5" stroke="#fff"></circle>
-                                        <path d="M21 12C21 12 20 4 12 4C4 4 3 12 3 12" stroke="#fff"></path>
-                                    </g>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="item-img-fix-div">
-                            <img src="https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/3205599cc49d4073ae66cbb0dbfded86.jpg"
-                                alt="">
-                        </div>
-                    </div>
-                    <div class="item-info">
-                        <div class="item-name">
-                            <a href="http://" target="_blank" rel="noopener noreferrer">Asthalin 100mcg Inhaler</a>
-                        </div>
-                        <div class="item-price-cont">
-                            <div class="item-price-util">
-                                <div class="original-price" style="color:grey; text-decoration:line-through;">MRP:$200
-                                </div>
-                                <div class="discount-percentage" style="color:red;">10% OFF</div>
-                            </div>
-                            <div class="discounted-price">
-                                $180
-                            </div>
-                        </div>
-                        <div class="item-action-btns">
-                            <button class="action-btn" id="addToCart">
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <div class="item-img">
-                        <div class="floating-menu">
-                            <button id="view-item">
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                    <g id="SVGRepo_iconCarrier">
-                                        <circle cx="12" cy="12" r="3.5" stroke="#fff"></circle>
-                                        <path d="M21 12C21 12 20 4 12 4C4 4 3 12 3 12" stroke="#fff"></path>
-                                    </g>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="item-img-fix-div">
-                            <img src="https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/3205599cc49d4073ae66cbb0dbfded86.jpg"
-                                alt="">
-                        </div>
-                    </div>
-                    <div class="item-info">
-                        <div class="item-name">
-                            <a href="http://" target="_blank" rel="noopener noreferrer">Asthalin 100mcg Inhaler</a>
-                        </div>
-                        <div class="item-price-cont">
-                            <div class="item-price-util">
-                                <div class="original-price" style="color:grey; text-decoration:line-through;">MRP:$200
-                                </div>
-                                <div class="discount-percentage" style="color:red;">10% OFF</div>
-                            </div>
-                            <div class="discounted-price">
-                                $180
-                            </div>
-                        </div>
-                        <div class="item-action-btns">
-                            <button class="action-btn" id="addToCart">
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <div class="item-img">
-                        <div class="floating-menu">
-                            <button id="view-item">
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                    <g id="SVGRepo_iconCarrier">
-                                        <circle cx="12" cy="12" r="3.5" stroke="#fff"></circle>
-                                        <path d="M21 12C21 12 20 4 12 4C4 4 3 12 3 12" stroke="#fff"></path>
-                                    </g>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="item-img-fix-div">
-                            <img src="https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/3205599cc49d4073ae66cbb0dbfded86.jpg"
-                                alt="">
-                        </div>
-                    </div>
-                    <div class="item-info">
-                        <div class="item-name">
-                            <a href="http://" target="_blank" rel="noopener noreferrer">Asthalin 100mcg Inhaler</a>
-                        </div>
-                        <div class="item-price-cont">
-                            <div class="item-price-util">
-                                <div class="original-price" style="color:grey; text-decoration:line-through;">MRP:$200
-                                </div>
-                                <div class="discount-percentage" style="color:red;">10% OFF</div>
-                            </div>
-                            <div class="discounted-price">
-                                $180
-                            </div>
-                        </div>
-                        <div class="item-action-btns">
-                            <button class="action-btn" id="addToCart">
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <div class="item-img">
-                        <div class="floating-menu">
-                            <button id="view-item">
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                    <g id="SVGRepo_iconCarrier">
-                                        <circle cx="12" cy="12" r="3.5" stroke="#fff"></circle>
-                                        <path d="M21 12C21 12 20 4 12 4C4 4 3 12 3 12" stroke="#fff"></path>
-                                    </g>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="item-img-fix-div">
-                            <img src="https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/3205599cc49d4073ae66cbb0dbfded86.jpg"
-                                alt="">
-                        </div>
-                    </div>
-                    <div class="item-info">
-                        <div class="item-name">
-                            <a href="http://" target="_blank" rel="noopener noreferrer">Asthalin 100mcg Inhaler</a>
-                        </div>
-                        <div class="item-price-cont">
-                            <div class="item-price-util">
-                                <div class="original-price" style="color:grey; text-decoration:line-through;">MRP:$200
-                                </div>
-                                <div class="discount-percentage" style="color:red;">10% OFF</div>
-                            </div>
-                            <div class="discounted-price">
-                                $180
-                            </div>
-                        </div>
-                        <div class="item-action-btns">
-                            <button class="action-btn" id="addToCart">
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <div class="item-img">
-                        <div class="floating-menu">
-                            <button id="view-item">
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                    <g id="SVGRepo_iconCarrier">
-                                        <circle cx="12" cy="12" r="3.5" stroke="#fff"></circle>
-                                        <path d="M21 12C21 12 20 4 12 4C4 4 3 12 3 12" stroke="#fff"></path>
-                                    </g>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="item-img-fix-div">
-                            <img src="https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/3205599cc49d4073ae66cbb0dbfded86.jpg"
-                                alt="">
-                        </div>
-                    </div>
-                    <div class="item-info">
-                        <div class="item-name">
-                            <a href="http://" target="_blank" rel="noopener noreferrer">Asthalin 100mcg Inhaler</a>
-                        </div>
-                        <div class="item-price-cont">
-                            <div class="item-price-util">
-                                <div class="original-price" style="color:grey; text-decoration:line-through;">MRP:$200
-                                </div>
-                                <div class="discount-percentage" style="color:red;">10% OFF</div>
-                            </div>
-                            <div class="discounted-price">
-                                $180
-                            </div>
-                        </div>
-                        <div class="item-action-btns">
-                            <button class="action-btn" id="addToCart">
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <div class="item-img">
-                        <div class="floating-menu">
-                            <button id="view-item">
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                    <g id="SVGRepo_iconCarrier">
-                                        <circle cx="12" cy="12" r="3.5" stroke="#fff"></circle>
-                                        <path d="M21 12C21 12 20 4 12 4C4 4 3 12 3 12" stroke="#fff"></path>
-                                    </g>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="item-img-fix-div">
-                            <img src="https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/3205599cc49d4073ae66cbb0dbfded86.jpg"
-                                alt="">
-                        </div>
-                    </div>
-                    <div class="item-info">
-                        <div class="item-name">
-                            <a href="http://" target="_blank" rel="noopener noreferrer">Asthalin 100mcg Inhaler</a>
-                        </div>
-                        <div class="item-price-cont">
-                            <div class="item-price-util">
-                                <div class="original-price" style="color:grey; text-decoration:line-through;">MRP:$200
-                                </div>
-                                <div class="discount-percentage" style="color:red;">10% OFF</div>
-                            </div>
-                            <div class="discounted-price">
-                                $180
-                            </div>
-                        </div>
-                        <div class="item-action-btns">
-                            <button class="action-btn" id="addToCart">
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="item-card">
-                    <div class="item-img">
-                        <div class="floating-menu">
-                            <button id="view-item">
-                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                    <g id="SVGRepo_iconCarrier">
-                                        <circle cx="12" cy="12" r="3.5" stroke="#fff"></circle>
-                                        <path d="M21 12C21 12 20 4 12 4C4 4 3 12 3 12" stroke="#fff"></path>
-                                    </g>
-                                </svg>
-                            </button>
-                        </div>
-                        <div class="item-img-fix-div">
-                            <img src="https://onemg.gumlet.io/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/3205599cc49d4073ae66cbb0dbfded86.jpg"
-                                alt="">
-                        </div>
-                    </div>
-                    <div class="item-info">
-                        <div class="item-name">
-                            <a href="http://" target="_blank" rel="noopener noreferrer">Asthalin 100mcg Inhaler</a>
-                        </div>
-                        <div class="item-price-cont">
-                            <div class="item-price-util">
-                                <div class="original-price" style="color:grey; text-decoration:line-through;">MRP:$200
-                                </div>
-                                <div class="discount-percentage" style="color:red;">10% OFF</div>
-                            </div>
-                            <div class="discounted-price">
-                                $180
-                            </div>
-                        </div>
-                        <div class="item-action-btns">
-                            <button class="action-btn" id="addToCart">
-                                Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <div class="item-container" id="itemContainer">
             </div>
         </div>
     </div>
@@ -389,4 +115,5 @@
     <%- include("../../partials/utils/footer.ejs"); %> 
 </body>
 <script src="/js/utils/hamburger.js"></script>
+<script src="/js/shop-main/abc.js"></script>
 </html>

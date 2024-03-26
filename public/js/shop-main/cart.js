@@ -256,4 +256,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   eventListenerAdd();
   eventListenerAddDelete();
   updateCartTotal();
+
+  //Update the total in the db when page is reloaded!
+
 });
