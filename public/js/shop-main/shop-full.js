@@ -105,33 +105,63 @@ async function fetchAndUpdate() {
 }
 
 // Function to generate link with filters and categories
+// function generateLink(page, method) {
+//     let baseUrl;
+//     if (method === "base") {
+//       baseUrl = "http://localhost:8080/shop/v1/getitem/";
+//       let link = baseUrl + `${page}/?d=default`;
+//       if (categoriesArray.length > 0 || filterArray.length > 0) {
+//         link += '&';
+//         if (categoriesArray.length > 0) {
+//           link += categoriesArray.map(cat => `cat=${cat}`).join('&');
+//         }
+//         if (filterArray.length > 0) {
+//           link += filterArray.map(fil => `fil=${fil}`).join('&');
+//         }
+//         method_GLOBAL = "base";
+//         return link;
+//       }
+//       return link; // Return early if no categories or filters
+//     }
+//     if (method === "search") {
+//       baseUrl = `http://localhost:8080/product/v1/search/`;
+//       let link = baseUrl + `${page}/?d=default`;
+//       method_GLOBAL = "search";
+//       console.log(link);
+//       return link;
+//     }
+// }  
+
+//New generate link function
 function generateLink(page, method) {
     let baseUrl;
     if (method === "base") {
-      baseUrl = "http://localhost:8080/shop/v1/getitem/";
-      let link = baseUrl + `${page}/?d=default`;
-      if (categoriesArray.length > 0 || filterArray.length > 0) {
-        link += '&';
+        baseUrl = "http://localhost:8080/shop/v1/getitem/";
+        let link = baseUrl + `${page}/?d=default`;
+        let params = [];
+        
         if (categoriesArray.length > 0) {
-          link += categoriesArray.map(cat => `cat=${cat}`).join('&');
+            params.push(categoriesArray.map(cat => `cat=${cat}`).join('&'));
         }
         if (filterArray.length > 0) {
-          link += filterArray.map(fil => `fil=${fil}`).join('&');
+            params.push(filterArray.map(fil => `fil=${fil}`).join('&'));
         }
-        method_GLOBAL = "base";
-        console.log(link);
+        
+        if (params.length > 0) {
+            link += '&' + params.join('&');
+            method_GLOBAL = "base";
+        }
+
         return link;
-      }
-      return link; // Return early if no categories or filters
     }
+
     if (method === "search") {
-      baseUrl = `http://localhost:8080/product/v1/search/`;
-      let link = baseUrl + `${page}/?d=default`;
-      method_GLOBAL = "search";
-      console.log(link);
-      return link;
+        baseUrl = `http://localhost:8080/product/v1/search/`;
+        let link = baseUrl + `${page}/?d=default`;
+        method_GLOBAL = "search";
+        return link;
     }
-}  
+}
 
 // Function to fetch data
 async function fetchData(link) {
@@ -168,48 +198,87 @@ function putData(data, parent) {
         <div class="item-img">
             <div class="floating-menu">
                 <button id="view-item">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <circle cx="12" cy="12" r="3.5" stroke="#fff"></circle>
-                            <path d="M21 12C21 12 20 4 12 4C4 4 3 12 3 12" stroke="#fff"></path>
-                        </g>
-                    </svg>
+                    <svg  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="12" r="3.5" stroke="#fff"></circle> <path d="M21 12C21 12 20 4 12 4C4 4 3 12 3 12" stroke="#fff"></path> </g></svg>
                 </button>
             </div>
             <div class="item-img-fix-div">
-                <img src="${data.med_image_url}"
-                    alt="">
+                <img id="img-${data.med_id}" src="${data["med_image_url"]}" alt="">
             </div>
         </div>
         <div class="item-info">
             <div class="item-name">
-                <a href="/shop/item/${data.med_id}" target="_blank" rel="noopener noreferrer">${data.med_name}</a>
+                <a href="/shop/item/${data.med_id}" id="name-${data.med_id}" target="_blank" rel="noopener noreferrer">${data.med_name}</a>
             </div>
             <div class="item-price-cont">
                 <div class="item-price-util">
-                    <div class="original-price" style="color:grey; text-decoration:line-through;">MRP:₹${data.med_price}
-                    </div>
-                    <div class="discount-percentage" style="color:red;">${discountPercentage}% OFF</div>
+                    <div class="original-price" style="color:grey; text-decoration:line-through;">MRP:₹${data.med_price}</div>
+                    <div class="discount-percentage" style="color:red;">${data.med_dist}% OFF</div>
                 </div>
-                <div class="discounted-price">
-                    ₹${price}
+                <div class="discounted-price" id="price-${data.med_id}">
+                ₹${price}
                 </div>
             </div>
             <div class="item-action-btns">
-                <button class="action-btn" id="addToCart">
-                    Add to Cart
-                </button>
+            <button class="action-btn add-to-cart" data-product-id="${data.med_id}" class="addToCart" id="add-${data.med_id}">
+                 Add to Cart
+             </button>
             </div>
         </div>
-    </div>
-        `;
+    </div>`;
     });
+    eventListnerAdd();
 }
 
 //add addToCart eventlistners.
+function eventListnerAdd(){
+    const cartBtn = document.querySelectorAll('.add-to-cart');
+    cartBtn.forEach(btn => {
+        btn.addEventListener('click',()=>{
+            console.log("Btn clicked");
+            let productId = btn.dataset.productId;
+            let btnId = btn.id ;            
+            let name = document.getElementById(`name-${productId}`).innerText;
+            let img = document.getElementById(`img-${productId}`).src;
+            let amount = parseInt(document.getElementById(`price-${productId}`).innerText.trim().substring(1));
+            console.log(productId,name,img,amount,btnId);
+            addToCart(productId,name,img,amount,btnId);
+        })
+    })
+}
 
+//send data to server
+function addToCart(productId,name,img, amount, btnId) {
+    fetch(`http://localhost:8080/addtocart/${productId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            productId: productId,
+            name : name,
+            img : img,
+            quantity: 1,
+            amount: amount
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            window.alert('Unable to add to cart!');
+            throw new Error('Unable to add to cart');
+        }
+        if (response.status === 500) {
+            window.alert("Item already in cart!");
+        }
+        // Disable the button after successful addition
+        console.log(btnId);
+        document.getElementById(btnId).disabled = true;
+        document.getElementById(btnId).innerText = "In Cart";
+    })
+    .catch(error => {
+        console.error('Error adding to cart:', error);
+        window.alert('Unable to add to cart!');
+    });
+}
 
 //Search functionalities 
 let searchBtn = document.getElementById('searchBtn');
