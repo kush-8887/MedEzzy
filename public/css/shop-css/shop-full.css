@@ -85,6 +85,7 @@
 }
 
 .navbar{
+    margin-bottom: 20px;
     border-bottom: 1px solid var(--card-border);
     padding: 10px;
     display: flex;
@@ -92,9 +93,15 @@
 }
 
 .navbar button {
-    margin-right: 2px;
+    width: 30px;
 }
 
+#decrease{
+    margin-right: -4px;
+}
+#increase{
+    margin-left: -4px;
+}
 
 .item-container {
     display: grid;
@@ -324,4 +331,11 @@
 }
 .footer {
     background-color: var(--background-color) !important;
+}
+
+#page-no{
+    height: 100%;
+    width: 40px;
+    text-align: center;
+    border: 1px solid var(--card-border);
 }
