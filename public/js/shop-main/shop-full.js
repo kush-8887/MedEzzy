@@ -280,6 +280,24 @@ function addToCart(productId,name,img, amount, btnId) {
     });
 }
 
+//mobile filter toggle btn
+let toggleFilter = document.getElementById('toggle-filter');
+toggleFilter.addEventListener('click', (e) => {
+    e.preventDefault();
+    let filterMenu = document.getElementById('mobile-filter-cont');
+    let filterBtn = document.getElementById('toggle-filter');
+
+    if (filterMenu.classList.contains('mobile-filter-not-toggled')) {
+        filterMenu.classList.remove('mobile-filter-not-toggled');
+        filterMenu.classList.add('mobile-filter-toggled');
+        filterBtn.textContent = 'Less';
+    } else {
+        filterMenu.classList.remove('mobile-filter-toggled');
+        filterMenu.classList.add('mobile-filter-not-toggled');
+        filterBtn.textContent = 'More';
+    }
+});
+
 //Search functionalities 
 let searchBtn = document.getElementById('searchBtn');
 searchBtn.addEventListener('click', async (e) => {

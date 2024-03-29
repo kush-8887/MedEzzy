@@ -11,85 +11,64 @@
     <link rel="stylesheet" href="/css/utils/footer.css">
 </head>
 <body>
-    <!-- mobile nav  -->
-    <nav id="mobile-nav" class="mobile-nav-not-toggled">
-        <button class="mobile-nav-close-btn" id="mobile-nav-close-btn">
-            <img src="/assets/svgs/utils/btns/close-btn.svg" alt="">
-        </button>
-        <div>
-            <h3>Filters </h3>
-            <ul class="mobile-nav-ul">
-                <li class="mobile-nav-li"><a class="mobile-nav-a" href="">Best seller</a></li>
-                <li class="mobile-nav-li"><a class="mobile-nav-a" href="">Best seller</a></li>
-                <li class="mobile-nav-li"><a class="mobile-nav-a" href="">Best seller</a></li>
-            </ul>
-        </div>
-        <div>
-            <h3>Categories</h3>
-            <ul class="mobile-nav-ul">
-                <li class="mobile-nav-li"><a class="mobile-nav-a" href="">Cancer</a></li>
-                <li class="mobile-nav-li"><a class="mobile-nav-a" href="">Fever</a></li>
-                <li class="mobile-nav-li"><a class="mobile-nav-a" href="">Cough</a></li>
-                <li class="mobile-nav-li"><a class="mobile-nav-a" href="">Painkillers</a></li>
-                <li class="mobile-nav-li"><a class="mobile-nav-a" href="">Acne</a></li>
-                <li class="mobile-nav-li"><a class="mobile-nav-a" href="">Diabetes</a></li>
-                <li class="mobile-nav-li"><a class="mobile-nav-a" href="">Heart</a></li>
-                <li class="mobile-nav-li"><a class="mobile-nav-a" href="">Hair loss</a></li>
-                <li class="mobile-nav-li"><a class="mobile-nav-a" href="">Depression</a></li>
-                <li class="mobile-nav-li"><a class="mobile-nav-a" href="">Asthma</a></li>
-                <li class="mobile-nav-li"><a class="mobile-nav-a" href="">Schizophrenia</a></li>
-                <li class="mobile-nav-li"><a class="mobile-nav-a" href="">Migrane</a></li>
-            </ul>
-        </div>
-    </nav>
+    <!-- mobile navbar  -->
+    <%- include("../../partials/shop/mobile-nav.ejs"); %>
     <!-- navbar -->
     <%- include("../../partials/shop/main-nav.ejs"); %>
     <div class="r">
         <div class="secondar-section " style="width: 22%;">
-            <section class="filters">
-                <h3>Filters </h3>
-                <hr>
-                <ul>
-                    <input type="checkbox" name="a" id="best"> Best Sellers
-                    <input type="checkbox" name="a" id="deal"> Deals of the day
-                </ul>
+            <section class="mobile-filter">
+                <div class="mobile-filter-cont">
+                    <h3 style="display: flex; align-items: center;">Filters </h3>
+                    <button id="toggle-filter">More</button>
+                </div>
             </section>
-            <section class="categories">
-                <h3>Categories</h3>
-                <hr>
-                <ul>
-                    <div class="categories-cont">
-                        <input type="checkbox" name="category" id="Cancer"> Cancer
-                    </div>
-                    <div class="categories-cont">
-                        <input type="checkbox" name="category" id="Fever"> Fever
-                    </div>
-                    <div class="categories-cont">
-                        <input type="checkbox" name="category" id="Painkillers"> Painkillers
-                    </div>
-                    <div class="categories-cont">
-                        <input type="checkbox" name="category" id="Acne"> Acne
-                    </div>
-                    <div class="categories-cont">
-                        <input type="checkbox" name="category" id="Diabetes"> Diabetes
-                    </div>
-                    <div class="categories-cont">
-                        <input type="checkbox" name="category" id="Heart"> Heart
-                    </div>
-                    <div class="categories-cont">
-                        <input type="checkbox" name="category" id="Hair_loss"> Hair loss
-                    </div>
-                    <div class="categories-cont">
-                        <input type="checkbox" name="category" id="Depression"> Depression
-                    </div>
-                    <div class="categories-cont">
-                        <input type="checkbox" name="category" id="Asthma"> Asthma
-                    </div>
-                    <div class="categories-cont">
-                        <input type="checkbox" name="category" id="Schizophrenia"> Schizophrenia
-                    </div>
-                </ul>
-            </section>
+            <div class="mobile-filter-not-toggled" id="mobile-filter-cont">
+                <section class="filters">
+                    <h3>Filters </h3>
+                    <hr>
+                    <ul>
+                        <input type="checkbox" name="a" id="best"> Best Sellers
+                        <input type="checkbox" name="a" id="deal"> Deals of the day
+                    </ul>
+                </section>
+                <section class="categories">
+                    <h3>Categories</h3>
+                    <hr>
+                    <ul>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Cancer"> Cancer
+                        </div>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Fever"> Fever
+                        </div>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Painkillers"> Painkillers
+                        </div>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Acne"> Acne
+                        </div>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Diabetes"> Diabetes
+                        </div>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Heart"> Heart
+                        </div>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Hair_loss"> Hair loss
+                        </div>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Depression"> Depression
+                        </div>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Asthma"> Asthma
+                        </div>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Schizophrenia"> Schizophrenia
+                        </div>
+                    </ul>
+                </section>
+            </div>
 
         </div>
         <!-- shop-main  -->
