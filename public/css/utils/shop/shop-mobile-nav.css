@@ -60,3 +60,11 @@
 .mobile-nav-open-btn img {
     height: 43px;
 }
+
+#logOutBtn{
+    color: black;
+    border: none;
+    background-color: #fff;
+    padding: 4px 30px;
+    border-radius: 30px;
+}

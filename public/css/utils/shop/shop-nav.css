@@ -103,6 +103,11 @@
     text-decoration: none;
     font-size: 1rem;
 }
+.cart-logo-container{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
 .cart-logo-container a{
     display: flex;
     align-items: center;
@@ -140,7 +145,16 @@ a:hover{
         padding: 2px 20px;
     }
     .nav-middle{
+        margin: 0; /* remove old margins  */
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 100%;
+    }
+    #logoutBtn{
         display: none;
+    }
+    .user-info-container{
+        width: fit-content;
     }
     .profile-link-container{
         display: none;
