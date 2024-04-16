@@ -16,7 +16,7 @@ function increaseFunc(btn) {
     let productId = id.substring(2);
     let quantityCont = document.getElementById(`quant-${productId}`);
     let quantity = parseInt(quantityCont.value);
-    if (quantity === 10) {
+    if (quantity === 3) {
       window.alert("Max quantity!");
     } else {
       quantity += 1;

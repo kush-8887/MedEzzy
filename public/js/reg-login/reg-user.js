@@ -11,6 +11,8 @@ submitButton.addEventListener('click', (e) => {
     const isPasswordValid = validatePassword(pass.value);
 
     if (isEmailValid && isPasswordValid) {
+
+        //Form submitted
         form.requestSubmit();
 
     } else {

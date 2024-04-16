@@ -1,5 +1,5 @@
 //Change array stores channged items
-let CHANGE_ARRAY = {};
+let CHANGE_OBJ = {};
 
 //Fetch cart items
 async function getCartItems() {
@@ -52,7 +52,7 @@ function displayCartItems(data) {
                     <div class="border">
                         <button class="quant-btn increase" id="i-${d.product_id}">+</button>
                         <input type="text" type="number" value="${d.product_quantity}" min="1" class="item-quant"  class="item-quant"
-                            id="quant-${d.product_id}">
+                            id="quant-${d.product_id}" readonly>
                         <button class="quant-btn decrease" id="d-${d.product_id}">-</button>
                     </div>
                 </div>
@@ -97,7 +97,7 @@ function increaseFunc(btn) {
   let productId = id.substring(2);
   let quantityCont = document.getElementById(`quant-${productId}`);
   let quantity = parseInt(quantityCont.value);
-  if (quantity === 10) {
+  if (quantity === 3) {
     window.alert("Max quantity!");
   } else {
     quantity += 1;
@@ -125,9 +125,9 @@ function decreaseFunc(btn) {
 async function deleteItem(d) {
   const productId = d.id.substring(2);
 
-  // Check if item is in CHANGE_ARRAY if item is removed before update
-  if (CHANGE_ARRAY.hasOwnProperty(productId)) {
-    delete CHANGE_ARRAY[productId];
+  // Check if item is in CHANGE_OBJ if item is removed before update
+  if (CHANGE_OBJ.hasOwnProperty(productId)) {
+    delete CHANGE_OBJ[productId];
   }
 
   // Reduce the cart total
@@ -195,11 +195,11 @@ function updateCartTotal() {
 
 //Add to updated cart array
 function addtoUpdatedCart(id, quantity, subTotal) {
-  if (CHANGE_ARRAY.hasOwnProperty(id)) {
-    CHANGE_ARRAY[id]["quantity"] = parseInt(quantity);
-    CHANGE_ARRAY[id]["subtotal"] = parseInt(subTotal);
+  if (CHANGE_OBJ.hasOwnProperty(id)) {
+    CHANGE_OBJ[id]["quantity"] = parseInt(quantity);
+    CHANGE_OBJ[id]["subtotal"] = parseInt(subTotal);
   } else {
-    CHANGE_ARRAY[id] = {
+    CHANGE_OBJ[id] = {
       quantity: parseInt(quantity),
       subtotal: parseInt(subTotal),
     };
@@ -223,22 +223,22 @@ const alertcontSucess = document.getElementById("alertcontSucess");
 const alertcontFail = document.getElementById("alertcontFail");
 updateBtn.addEventListener("click", async (e) => {
   let grandTotal = getGrandTotal();
-  CHANGE_ARRAY["grand"] = grandTotal;
+  CHANGE_OBJ["grand"] = grandTotal;
   e.preventDefault(); // Prevent the default form submission behavior
 
-  // Assuming CHANGE_ARRAY is a global variable containing the cart data
+  // Assuming CHANGE_OBJ is a global variable containing the cart data
   await fetch("/updatecart", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(CHANGE_ARRAY),
+    body: JSON.stringify(CHANGE_OBJ),
   })
     .then((response) => {
       if (response.ok) {
         console.log("Cart updated successfully.");
         alertcontSucess.style.display = "flex";
-        CHANGE_ARRAY = {}; // Clear the CHANGE_ARRAY after successful update
+        CHANGE_OBJ = {}; // Clear the CHANGE_OBJ after successful update
       } else {
         alertcontFail.style.display = "flex";
         console.error("Failed to update cart.");

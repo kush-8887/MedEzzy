@@ -190,42 +190,48 @@ async function fetchSearch(){
 // Function to populate the page
 function putData(data, parent) {
     parent.innerHTML = '';
-    data.forEach(data => {
-        let discountPercentage = data.med_dist !== null ? `${data.med_dist}` : 0;
-        let price = (discountPercentage === 0) ? data.med_price : Math.floor(data.med_price - (data.med_price * data.med_dist) / 100);
-        parent.innerHTML += `
-        <div class="item-card">
-        <div class="item-img">
-            <div class="floating-menu">
-                <button id="view-item">
-                    <svg  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="12" r="3.5" stroke="#fff"></circle> <path d="M21 12C21 12 20 4 12 4C4 4 3 12 3 12" stroke="#fff"></path> </g></svg>
-                </button>
-            </div>
-            <div class="item-img-fix-div">
-                <img id="img-${data.med_id}" src="${data["med_image_url"]}" alt="">
-            </div>
-        </div>
-        <div class="item-info">
-            <div class="item-name">
-                <a href="/shop/item/${data.med_id}" id="name-${data.med_id}" target="_blank" rel="noopener noreferrer">${data.med_name}</a>
-            </div>
-            <div class="item-price-cont">
-                <div class="item-price-util">
-                    <div class="original-price" style="color:grey; text-decoration:line-through;">MRP:₹${data.med_price}</div>
-                    <div class="discount-percentage" style="color:red;">${data.med_dist}% OFF</div>
+    if(!Array.isArray(data) || data.length === 0){
+        parent.innerHTML = "No items found!"
+    }else{
+        data.forEach(data => {
+            let discountPercentage = data.med_dist !== null ? parseFloat(data.med_dist) : 0;
+            let price = (discountPercentage === 0) ? data.med_price : Math.floor(data.med_price - (data.med_price * discountPercentage) / 100);
+            parent.innerHTML += `
+            <div class="item-card">
+                <div class="item-img">
+                    <div class="floating-menu">
+                        <a href="/shop/item/${data.med_id}" target="_blank">
+                        <button id="view-item">
+                            <svg  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="12" r="3.5" stroke="#fff"></circle> <path d="M21 12C21 12 20 4 12 4C4 4 3 12 3 12" stroke="#fff"></path> </g></svg>
+                        </button>
+                        </a>
+                    </div>
+                    <div class="item-img-fix-div">
+                        <img id="img-${data.med_id}" src="${data["med_image_url"]}" alt="">
+                    </div>
                 </div>
-                <div class="discounted-price" id="price-${data.med_id}">
-                ₹${price}
+                <div class="item-info">
+                    <div class="item-name">
+                        <a href="/shop/item/${data.med_id}" id="name-${data.med_id}" target="_blank" rel="noopener noreferrer">${data.med_name}</a>
+                    </div>
+                    <div class="item-price-cont">
+                        <div class="item-price-util">
+                            <div class="original-price" style="color:grey; text-decoration:line-through;">MRP:₹${data.med_price}</div>
+                            <div class="discount-percentage" style="color:red;">${discountPercentage}% OFF</div>
+                        </div>
+                        <div class="discounted-price" id="price-${data.med_id}">
+                            ₹${price}
+                        </div>
+                    </div>
+                    <div class="item-action-btns">
+                        <button class="action-btn add-to-cart" data-product-id="${data.med_id}" class="addToCart" id="add-${data.med_id}">
+                            Add to Cart
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div class="item-action-btns">
-            <button class="action-btn add-to-cart" data-product-id="${data.med_id}" class="addToCart" id="add-${data.med_id}">
-                 Add to Cart
-             </button>
-            </div>
-        </div>
-    </div>`;
-    });
+            </div>`;
+        });    
+    }
     eventListnerAdd();
 }
 

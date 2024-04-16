@@ -53,4 +53,10 @@ router.get('/shop/shopfull',verifyCustToken('customer'),(req,res)=>{
     )
 })
 
+router.get('/checkout',verifyCustToken('customer'),(req,res)=>{
+    res.render(
+        'pages/shop-pages/checkout.ejs'
+    )
+})
+
 module.exports = router;

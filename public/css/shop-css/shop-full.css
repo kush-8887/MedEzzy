@@ -262,7 +262,7 @@
 
 /* important !!!! */
 .mobile-nav-toggled {
-    height: fit-content !important;
+    /* height: fit-content !important; */
     flex-direction: column;
     position:fixed !important;
     width:100%;
