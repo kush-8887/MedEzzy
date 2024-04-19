@@ -7,7 +7,7 @@ const { performSqlQuery } = require("../../database/dbconnection");
     2) Each route will have its own params and data return limits
 */
 
-//To get all details of items  (limit must be mentioned and should not be >15000)
+//To get all details of items  (limit must be mentioned and should not be >15000) NOT USED !!!!
 router.get("/products/v1/med/all-med", async (req, res) => {
   var limit = req.query.limit;
 

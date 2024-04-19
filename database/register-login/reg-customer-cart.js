@@ -7,7 +7,7 @@
 
 const {performSqlQuery } = require('../dbconnection.js');
 
-function assignCart(userData){
+async function assignCart(userData){
     var query = `INSERT INTO testingdb.cart_creds (cust_cart_id,cart_created_date,cart_created_time,cart_total) VALUES ("${userData.cust_cart_id}","${userData.reg_date}","${userData.reg_time}",${0}) `
     try{
         performSqlQuery(query);
