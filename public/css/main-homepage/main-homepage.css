@@ -16,6 +16,11 @@
     --offer-background:#f4f8fb;
     --border-color:#00c9a7;
     --grey-border-color:rgb(215, 217, 224);
+
+    --background-color :#24aeb1;
+    --btn-hover:#1c8687;
+    --card-border:#dfe3e6;
+    --white :#fff;
 }
 /* Utility */
 .img-container{

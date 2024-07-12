@@ -38,16 +38,12 @@ body{
     padding: 30px;
     border-radius: 20px;
     margin: 0% 11%;
-    /* -webkit-box-shadow: 13px -13px 0px -1px rgba(101,188,80,1);
-    -moz-box-shadow: 13px -13px 0px -1px rgba(101,188,80,1);
-    box-shadow: 13px -13px 0px -1px rgba(101,188,80,1); */
 }
 .form-content{
     display: flex;
     flex-direction: column;
     height: 100%;
     justify-content: center;
-    /* margin: 15% 0%; */
     align-items: center;
 }
 .form-heading{

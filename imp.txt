@@ -1,0 +1,28 @@
+customer email for dev
+
+abc@gmail.com 
+123456789
+
+Api documentation
+
+Use fetch api to get data from the database.
+
+Getting all details of a medicine
+
+1)  Get all details of a medicine
+    
+    url - /shop/v1/items/all-item?limit=yourlimit
+    to get all details about a specific no of medicine 
+
+    limit = a number  ; 0 < limit < 145000
+
+    if no limit provided error 
+
+2)  Get all details of a specific medicine
+    url - /shop/v1/items/single-item?med_id=med_id
+
+    med_id = valid med_id provided by server
+
+    if no med id provided error
+
+3) 

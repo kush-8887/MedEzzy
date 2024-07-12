@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Inter&family=Roboto&family=Rubik&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cabin', sans-serif;
+}
+
+:root {
+    --main-purple: #3e4095;
+    --main-green: #65bc50;
+    --main-heading: #033b4a;
+    --nav-items-color: #636778;
+    --white: white;
+    --offer-background: #f4f8fb;
+    --border-color: #00c9a7;
+    --grey-border-color: rgb(215, 217, 224);
+    --background-color: #24aeb1;
+    --btn-hover: #1c8687;
+    --card-border: #dfe3e6;
+    --white: #fff;
+
+    /* additional styles CART*/
+    --cart-border: #e6e6e6;
+    --mobile-heading-color: #7D879C;
+    --cart-total-back: #f8f8f8;
+
+    /* additional style this page! */
+
+}
+.color{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: var(--cart-total-back);
+}
+/* utils */
+.heading-big{
+    font-size: 25px;
+    font-weight: 600;
+}
+.heading-small{
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--mobile-heading-color);
+}
+.spacing{
+    width: 90%; 
+    padding: 20px;
+    /* remove 10% from 5% both sides  */
+    display: flex;
+    margin: 0% 5%;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.spacing-2{
+    width: 90%; 
+    /* remove 10% from 5% both sides  */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin: 5% 5% 0% 5%;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.med-info{
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+.quant-btn {
+    border: none;
+    height: 35px;
+    width: 50px;
+    background: transparent;
+    font-size: 20px;
+}
+
+.quant-btn:hover {
+    cursor: pointer;
+}
+.add-m{
+    margin-top: 5px;
+}
+.add-d{
+    margin-top: 20px;
+}
+
+/* img cont  */
+.item-img-cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+/* item-info */
+.item-info-cont{
+    width: 50%;
+}
+
+/* disct container */
+.disct-container{
+    border-radius: 10px ;
+    color: #fff;
+    background-color: var(--background-color);
+    width: fit-content;
+    padding: 5px;
+    font-size: 12px;
+}
+/* item name */
+.item-name{
+    margin-top: 5px;
+}
+/* price-cont */
+.item-price-cont{
+    margin: 20px 0;
+    display: flex;
+    width: 100%;
+}
+.mrp{
+    margin-left: 10px ;
+    font-size: 20px;
+    color: var(--mobile-heading-color);
+    text-decoration: line-through;
+}
+.dist-price{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--background-color);
+}
+
+/* med actions  */
+.med-actions{
+    display: flex;
+}
+/* med-quant  */
+.quant-cont{
+    display: flex;
+    align-items: center;
+}
+.border {
+    margin-left: 10px;
+    border: 1px solid var(--cart-border);
+    width: fit-content;
+}
+
+.item-quantity-cont {
+    display: flex;
+    align-items: center;
+}
+
+.item-quant {
+    text-align: center;
+    font-size: 15px;
+    height: 35px;
+    width: 50px;
+    border: none;
+}
+
+#increaseBtn {
+    margin-right: -4px;
+}
+
+#decreaseBtn {
+    margin-left: -4px;
+}
+
+/* addtocart btn */
+#addToCart-btn {
+    margin-left: 10px;
+    width: 40%;
+    padding: 15px;
+    border-radius: 35px;
+    border: navajowhite;
+    background-color: var(--background-color);
+    color: #fff;
+}
+
+#addToCart-btn:hover {
+    cursor: pointer;
+    background-color: var(--btn-hover);
+}
+
+/* item description */
+.i-cont{
+    line-height: 35px;
+}
+
+@media screen and (max-width:786px){
+    .spacing{
+        flex-direction: column;
+    }
+    .item-img-cont{
+        width: 100%;
+    }
+    .item-img{
+        position: relative;
+        height: 50%;
+        width: 50%;
+    }
+    .item-info-cont{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .med-actions{
+        flex-direction: column;
+    }
+    #addToCart-btn{
+        margin-top: 10px;
+        margin-left: 0;
+    }
+}
+
+/* footer (for this page)  */
+.footer{
+    background-color: var(--background-color) !important;
+}
+.main-logo{
+    width: 240px !important;
+}

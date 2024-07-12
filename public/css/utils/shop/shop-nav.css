@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Inter&family=Roboto&family=Rubik&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cabin', sans-serif;
+}
+
+:root {
+    --background-color :#24aeb1;
+}
+
+/* utility */
+.nav-margin-util{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: 0% 5% 0% 5%;
+}
+
+.socials-nav{
+    background-color: var(--background-color);
+    color: white;
+    height: 40px;
+}
+.logo-container{
+    display: flex;
+    align-items: center;
+    width: fit-content
+}
+.logo-container svg{
+    height: 80px;
+    width: 200px;
+}
+
+.nav-search-container{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e4e4e4;
+    border-radius: 30px;
+}
+#searchForm{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#searchBox{
+    padding: 0.75rem;
+    display: inline-block;
+    vertical-align: middle;
+    white-space: normal;
+    line-height: 1;
+    min-width: 0;
+    font-size: 14px;
+    border: none;
+    width: 91%;
+    border-radius: 30px;
+}
+#searchBox:focus-visible{
+    border: none;
+    outline: none;
+    border-radius: 30px;
+}
+#searchBtn{
+    color: #fff;
+    border: none;
+    background-color: var(--background-color);
+    padding: 2px 30px;
+    margin: 1px;
+    border-radius: 30px
+}
+#searchBtn:hover{
+    cursor: pointer;
+}
+.nav-middle{
+    margin-top: 25px;
+    margin-left: 20px;
+    width: 55%;
+}
+.links-container{
+    margin-top: 20px;
+}
+.links-container a{
+    color: black;
+    text-decoration: none;
+    padding: 0px 15px;
+    padding-left: 0px;
+    font-weight: 600;
+}
+.user-info-container{
+    display: flex;
+    width: 27.5%;
+    justify-content: flex-end;
+}
+.profile-link-container{
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+.profile-link-container a{
+    color: black;
+    text-decoration: none;
+    font-size: 1rem;
+}
+.cart-logo-container{
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+.cart-logo-container a{
+    display: flex;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+    font-size: 1rem;
+}
+a:hover{
+    color: var(--background-color);
+}
+.logout-btn{
+    display: flex;
+    align-items: center;
+}
+#logoutBtn{
+    margin-left: 20px;
+    color: #fff;
+    border: none;
+    background-color: var(--background-color);
+    padding: 8px 30px;
+    border-radius: 30px
+}
+
+@media screen and (max-width:786px) {
+    .mobile-nav-open-btn{
+        display: inline !important; 
+    }
+    .links-container{
+        display: none;
+    }
+    .logo-container svg{
+        width: 100px;
+    }
+    #searchBtn{
+        padding: 2px 20px;
+    }
+    .nav-middle{
+        margin: 0; /* remove old margins  */
+        margin-left: 5px;
+        margin-right: 5px;
+        width: 100%;
+    }
+    #logoutBtn{
+        display: none;
+    }
+    .user-info-container{
+        width: fit-content;
+    }
+    .profile-link-container{
+        display: none;
+    }
+    .cart-logo-container{
+        display: none;
+    }
+    .nav-margin-util{
+        justify-content: space-between;
+    }
+}

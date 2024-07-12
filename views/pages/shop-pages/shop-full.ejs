@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedEzzy-Products</title>
+    <link rel="stylesheet" href="/css/shop-css/shop-full.css">
+    <link rel="stylesheet" href="/css/utils/shop/shop-mobile-nav.css">
+    <link rel="stylesheet" href="/css/utils/shop/shop-nav.css">
+    <link rel="stylesheet" href="/css/utils/footer.css">
+</head>
+<body>
+    <!-- mobile navbar  -->
+    <%- include("../../partials/shop/mobile-nav.ejs"); %>
+    <!-- navbar -->
+    <%- include("../../partials/shop/main-nav.ejs"); %>
+    <div class="r">
+        <div class="secondar-section " style="width: 22%;">
+            <section class="mobile-filter">
+                <div class="mobile-filter-cont">
+                    <h3 style="display: flex; align-items: center;">Filters </h3>
+                    <button id="toggle-filter">More</button>
+                </div>
+            </section>
+            <div class="mobile-filter-not-toggled" id="mobile-filter-cont">
+                <section class="filters">
+                    <h3>Filters </h3>
+                    <hr>
+                    <ul>
+                        <input type="checkbox" name="a" id="best"> Best Sellers
+                        <input type="checkbox" name="a" id="deal"> Deals of the day
+                    </ul>
+                </section>
+                <section class="categories">
+                    <h3>Categories</h3>
+                    <hr>
+                    <ul>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Cancer"> Cancer
+                        </div>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Fever"> Fever
+                        </div>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Painkillers"> Painkillers
+                        </div>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Acne"> Acne
+                        </div>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Diabetes"> Diabetes
+                        </div>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Heart"> Heart
+                        </div>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Hair_loss"> Hair loss
+                        </div>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Depression"> Depression
+                        </div>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Asthma"> Asthma
+                        </div>
+                        <div class="categories-cont">
+                            <input type="checkbox" name="category" id="Schizophrenia"> Schizophrenia
+                        </div>
+                    </ul>
+                </section>
+            </div>
+
+        </div>
+        <!-- shop-main  -->
+        <div class="shop-main">
+            <div class="navbar">
+
+                <p>Showing Results</p>
+
+                <div class="pages">
+                    <button type="button" id="decrease">&#8249;</button>
+                    <input for="number" id="page-no" value="1"></input>
+                    <button type="button" id="increase">&#8250;</button>
+                </div>
+            </div>
+            <div class="item-container" id="itemContainer">
+            </div>
+        </div>
+    </div>
+    <!-- footer  -->
+    <%- include("../../partials/utils/footer.ejs"); %> 
+</body>
+<script src="/js/utils/hamburger.js"></script>
+<script src="/js/shop-main/shop-full.js"></script>
+</html>

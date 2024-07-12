@@ -1,15 +1,15 @@
 const { performSqlQuery } = require('../../database/dbconnection');
 
-function custEmailCheck(userData) {
-    const q = 'SELECT user_email FROM `testingdb`.`user_creds`;';
-    const emailToCheck = userData.user_email;
+async function custEmailCheck(userData) {
+    const q = 'SELECT cust_email FROM `testingdb`.`cust_creds`;';
+    const emailToCheck = userData.cust_email;
 
     return performSqlQuery(q)
         .then(result => {
             const user_email = result.rows;
 
             for (var i = 0; i < user_email.length; i++) {
-                if (user_email[i].user_email === emailToCheck) {
+                if (user_email[i].cust_email === emailToCheck) {
                     return false;
                 }
             }
@@ -19,26 +19,28 @@ function custEmailCheck(userData) {
             console.error("Error performing SQL query:", error);
         });
 }
-function partEmailCheck(partnerData) {
-    const q = 'SELECT partner_email FROM `testingdb`.`partner_creds`;';
-    const emailToCheck = partnerData.partner_email;
+
+async function custEmailCheckLogin(userData) {
+    const q = 'SELECT cust_email FROM `testingdb`.`cust_creds`;';
+    const emailToCheck = userData["user_email"];
 
     return performSqlQuery(q)
         .then(result => {
-            const partner_email = result.rows;
+            const user_email = result.rows;
 
-            for (var i = 0; i < partner_email.length; i++) {
-                if (partner_email[i].user_email === emailToCheck) {
-                    return false;
+            for (var i = 0; i < user_email.length; i++) {
+                if (user_email[i].cust_email === emailToCheck) {
+                    return true;
                 }
             }
-            return true;
+            return false;
         })
         .catch(error => {
             console.error("Error performing SQL query:", error);
         });
 }
+
 module.exports ={
     custEmailCheck,
-    partEmailCheck
-}
+    custEmailCheckLogin
+};

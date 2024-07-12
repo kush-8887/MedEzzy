@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> <%= med_name %></title>
+    <link rel="stylesheet" href="/css/shop-css/single-item.css">
+    <link rel="stylesheet" href="/css/utils/shop/shop-mobile-nav.css">
+    <link rel="stylesheet" href="/css/utils/shop/shop-nav.css">
+    <link rel="stylesheet" href="/css/utils/footer.css">
+</head>
+<body>
+    <!-- mobile-nav  -->
+    <%- include("../../partials/shop/mobile-nav.ejs"); %>
+    <!-- navbar  -->
+    <%- include("../../partials/shop/main-nav.ejs"); %>
+    <!-- main page  -->
+    <div class="color">
+        <!-- main item -->
+        <div class="spacing">
+            <!-- item img  -->
+            <div class="item-img-cont">
+                <!-- ejs img  -->
+                <img src="<%= med_image_url %>" alt="" srcset="" class="item-img" id="i-<%= med_id %>"> 
+            </div>
+            <!-- item-info  -->
+            <div class="item-info-cont">
+                <!-- item name -->
+                <div class="item-name-cont">
+                    <div class="disct-container">
+                        <%= med_dist %>% OFF
+                    </div>
+                    <div class="item-name heading-big" id="n-<%= med_id %>">
+                        <%= med_name %>
+                    </div>
+                </div>
+                <!-- item price  -->
+                <div class="item-price-cont">
+                    <div class="dist-price" id="d-<%= med_id %>">
+                        ₹<%= med_price - Math.floor((med_price * med_dist)/100) %>
+                    </div>
+                    <div class="mrp">
+                        ₹<%= med_price %>
+                    </div>
+                </div>
+                <!-- item info -->
+                <div class="item-about">
+                    <div class="manufacturer med-info">
+                        <div class="heading-small">
+                            Manufacturer: 
+                        </div>
+                        <div>
+                            <%= med_manufacturer %>
+                        </div>
+                    </div>
+                    <div class="composition med-info">
+                        <div class="heading-small">
+                            Composition: 
+                        </div>
+                        <div>
+                            <%= med_comp %>
+                        </div>
+                    </div>
+                    <div class="med-type med-info">
+                        <div class="heading-small">
+                            Medicine Type: 
+                        </div>
+                        <div>
+                            <% if (med_types === null) { %>
+                                Not applicable
+                            <% } else { %>
+                                <%= med_types %>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+                <!-- med action btns -->
+                <div class="med-actions">
+                    <!-- quantity btns -->
+                    <div class="quant-cont">
+                        Quantity: 
+                        <div class="border">
+                            <button class="quant-btn increase" id="i-<%= med_id %>">+</button>
+                            <input type="text" type="number" value="1" min="1" class="item-quant"  class="item-quant"
+                                id="quant-<%= med_id %>" readonly>
+                            <button class="quant-btn decrease" id="d-<%= med_id %>">-</button>
+                        </div>
+                    </div>
+                    <!-- add to cart btn -->
+                    <button id="addToCart-btn">
+                        ADD TO CART
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- additional info  -->
+        <div class="spacing-2">
+            <div class="heading-big">
+                Additional info
+            </div>
+            <div class="item-additional">
+                <div class="item-desc">
+                    <div class="heading-big add-d">
+                        Description
+                    </div>
+                    <div class="i-cont add-m">
+                        <% if (med_desc === null) { %>
+                            No Description available
+                        <% } else { %>
+                            <%= med_desc %>
+                        <% } %>
+                    </div>
+                </div>
+                <div class="item-uses">
+                    <div class="heading-big add-d">
+                        Uses
+                    </div>
+                    <div class="i-cont add-m">
+                        <%= med_uses %>
+                    </div>
+                </div>
+                <div class="item-side">
+                    <div class="heading-big add-d">
+                        Side Effects
+                    </div>
+                    <div class="i-cont add-m">
+                        <%= med_side_effect %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="display: none;" id="hiden-elem">
+        <%= med_id %>
+    </div>
+    <!-- footer  -->
+    <%- include("../../partials/utils/footer.ejs"); %> 
+</body>
+<script src="/js/utils/hamburger.js"></script>
+<script src="/js/shop-main/single-page.js"></script>
+</html>

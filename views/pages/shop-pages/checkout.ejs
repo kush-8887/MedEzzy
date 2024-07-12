@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="/css/shop-css/shop-full.css"> -->
+    <link rel="stylesheet" href="/css/shop-css/checkout.css">
+    <link rel="stylesheet" href="/css/utils/shop/shop-mobile-nav.css">
+    <link rel="stylesheet" href="/css/utils/shop/shop-nav.css">
+    <link rel="stylesheet" href="/css/utils/footer.css">
+    <title>CheckOut</title>
+</head>
+
+<body>
+    <%- include("../../partials/shop/mobile-nav.ejs"); %>
+    <!-- navbar -->
+    <%- include("../../partials/shop/main-nav.ejs"); %>
+    <div class="cart-container">
+        <div class="cart">
+            <div class="cart-headers">
+                <h2 class="main-head" id="cart-head">CheckOut</h2>
+                <div class="update-cart-cont">
+            </div>
+                <button id="update-cart">Update Cart</button>
+            </div>
+            <div class="cart-items" id="main">
+                
+            </div>
+        </div>
+        <div class="cart-total">
+            <div class="cart-total-decor">
+                <div class="cart-total-container">
+                    <div class="sub-head">
+                        Total
+                    </div>
+                    <div id="cart-subtotal-cont" class="cart-totals">
+                        <div class="amnt-spacing">
+                            Subtotal: <div class="amnt-cont" id="cart-subtotal">₹</div>
+                        </div>
+                    </div>
+                    <div id="cart-subtotal-cont" class="cart-totals">
+                        <div class="amnt-spacing">
+                            Enter code: <div class="amnt-cont" ><input id="code" type="text"></div>
+                        </div>
+                        <div class="amnt-spacing">
+                            &#8203;<div class="amnt-cont" ><button id="applyDist">Apply</button></div>
+                        </div>
+                    </div>
+                    <div id="dist-cont" class="cart-totals">
+                        <div class="amnt-spacing">
+                            Discount Applied <div class="amnt-cont" id="disct-applied">₹</div>
+                        </div>
+                    </div>
+                    <div id="cart-total-cont" class="cart-totals">
+                        <div class="amnt-spacing">
+                            Total: <div class="amnt-cont" id="cart-total">₹</div>
+                        </div>
+                    </div>
+                    <div class="check-out-cont">
+                        <button id="checkout-btn">
+                            Place Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include("../../partials/utils/footer.ejs"); %> 
+</body>
+<script src="/js/utils/hamburger.js"></script>
+<script src="/js/shop-main/checkout-front.js"></script>
+</html>
