@@ -1,7 +1,7 @@
 # MedEzzy Development Rules
 This is an **Request** to please follow this guide to ensure readability and simplicity throughout the project. 
 
-**DO NOT COMMIT TO MAIN** 
+**DO NOT COMMIT TO MAIN ** 
 # File Structure
 
 Follow the file structure of the public folder (refer to github )
