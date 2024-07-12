@@ -78,5 +78,5 @@ Following describes the best CSS practices and the rules we are following with o
 	--grey-border-color:rgb(215, 217, 224);
 		
 	/*Additional color!*/
-	Your variables here
+	Your variables here ...
 	}
